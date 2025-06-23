@@ -29,15 +29,15 @@ header nav {
 
 .login-btn {
     text-decoration: none;
-    background-color: #e6e6e6;
+    background-color:  #1b4d3e;
     padding: 10px 15px;
     border-radius: 6px;
-    color: #000;
+    color: white;
 }
 
 main {
     text-align: center;
-    margin-top: 40px;
+    padding: 60px 20px;
 }
 
 .login-container {
@@ -92,7 +92,7 @@ button {
 }
 
 .divider {
-    margin: 15px 0;
+    margin: 10px 0;
     color: #666;
 }
 
