@@ -31,7 +31,7 @@ header nav {
     color: #333;
     font-weight: 500;
     white-space: nowrap;
-    font-size: 14px
+    font-size: 14px;
 
 }
 
@@ -48,7 +48,7 @@ header nav {
 
 main {
     text-align: center;
-    padding-top: 15vh; /* 15% de la altura de la ventana */
+    padding-top: 3vh; /* 15% de la altura de la ventana */
     padding-bottom: 15vh;
     padding-left: 20px;
     padding-right: 20px;
@@ -72,7 +72,7 @@ main {
 }
 
 input {
-    width: calc(100% - 24px);
+    width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -117,7 +117,7 @@ button {
 
 .divider {
     margin: 15px 0;
-    width: 100%
+    width: 100%;
     color: #666;
 }
 
@@ -193,3 +193,4 @@ button {
         width: calc(100% - 10px);
     }
 }
+
