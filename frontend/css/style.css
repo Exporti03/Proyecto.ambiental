@@ -1,3 +1,4 @@
+/* Reset básico y estilo general */
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f8f9f9;
@@ -6,6 +7,7 @@ body {
     color: #1e1e1e;
 }
 
+/* Header y menú */
 header nav {
     display: flex;
     justify-content: space-between;
@@ -36,7 +38,7 @@ header nav {
 
 .login-btn {
     text-decoration: none;
-    background-color:  #1b4d3e;
+    background-color: #1b4d3e;
     padding: 8px 12px;
     border-radius: 6px;
     color: white;
@@ -45,12 +47,10 @@ header nav {
     min-width: fit-content;
 }
 
+/* Contenido principal */
 main {
     text-align: center;
-    padding-top: 3vh;
-    padding-bottom: 15vh;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 3vh 20px 15vh;
 }
 
 .login-container {
@@ -70,22 +70,11 @@ main {
     margin-bottom: 20px;
 }
 
-.form-group {
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
+/* Inputs y selects */
 input, select {
     width: 100%;
     padding: 12px;
-    margin: 5px 0 0;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
@@ -95,19 +84,26 @@ input, select {
     background-color: #fff;
 }
 
-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 16px 16px;
+input:focus, select:focus {
+    border-color: #1b4d3e;
+    outline: none;
 }
 
+input.error, select.error {
+    border-color: #e74c3c;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Botones */
 button {
     width: 100%;
-    margin: 15px 0 0;
+    margin-bottom: 15px;
     padding: 12px;
     background-color: #1b4d3e;
     color: white;
@@ -116,6 +112,10 @@ button {
     cursor: pointer;
     font-weight: bold;
     box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #163b2f;
 }
 
 .google-btn {
@@ -138,6 +138,7 @@ button {
     height: 20px;
 }
 
+/* Línea divisoria */
 .divider {
     margin: 15px 0;
     width: 100%;
@@ -146,26 +147,23 @@ button {
     text-align: center;
 }
 
+.divider::before, .divider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+}
+
 .divider::before {
-    content: "";
-    position: absolute;
-    top: 50%;
     left: 0;
-    width: 45%;
-    height: 1px;
-    background-color: #ddd;
 }
-
 .divider::after {
-    content: "";
-    position: absolute;
-    top: 50%;
     right: 0;
-    width: 45%;
-    height: 1px;
-    background-color: #ddd;
 }
 
+/* Enlaces */
 .link {
     display: block;
     margin-top: 10px;
@@ -174,7 +172,7 @@ button {
     text-decoration: none;
 }
 
-/* Estilos para campos dinámicos */
+/* Campos dinámicos (registro) */
 .campo-dinamico {
     overflow: hidden;
     max-height: 0;
@@ -184,58 +182,40 @@ button {
 }
 
 .campo-dinamico.mostrar {
-    max-height: 1000px; /* Valor alto para que se expanda según contenido */
+    max-height: 1000px;
     opacity: 1;
 }
 
+/* Mensajes de error */
 .error-message {
     color: #e74c3c;
     font-size: 12px;
-    margin-top: 5px;
-    min-height: 18px;
+    margin-top: 2px;
+    min-height: 16px;
 }
 
-input:invalid, select:invalid {
-    border-color: #e74c3c;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-input:invalid, select:invalid {
-    animation: shake 0.5s;
-    animation-iteration-count: 1;
-}
-
+/* Responsivo */
 @media (max-width: 768px) {
     header nav {
         padding: 10px 3%;
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .menu {
         gap: 10px;
         justify-content: center;
     }
-    
+
     .menu li a {
         font-size: 13px;
     }
-    
+
     .login-btn {
         padding: 10px 15px;
         font-size: 14px;
     }
-    
-    main {
-        margin-top: 20px;
-        padding: 0 15px;
-    }
-    
+
     .login-container {
         padding: 20px 15px;
         margin: 0 10px;
@@ -247,27 +227,23 @@ input:invalid, select:invalid {
     header nav {
         padding: 10px 2%;
     }
-    
+
     .menu {
         gap: 8px;
         flex-direction: column;
         text-align: center;
     }
-    
+
     .menu li a {
         font-size: 12px;
         padding: 5px 0;
     }
-    
+
     .login-btn {
         padding: 8px 12px;
         font-size: 13px;
     }
-    
-    main {
-        padding: 0 10px;
-    }
-    
+
     .login-container {
         padding: 15px 10px;
         margin: 0 5px;

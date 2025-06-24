@@ -4,49 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crear Cuenta</title>
-  <link rel="stylesheet" href="/fronted/css/style.css" />
+  <link rel="stylesheet" href="/frontend/css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <ul class="menu">
-      <li><a href="index.html">INICIO</a></li>
-      <li><a href="#">SERVICIOS</a></li>
-      <li><a href="#">NOSOTROS</a></li>
-      <li><a href="#">CLIENTE</a></li>
-      <li><a href="#">NOTICIA</a></li>
-    </ul>
-    <a href="index.html" class="login-btn">Iniciar Sesión</a>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="#">SERVICIOS</a></li>
+        <li><a href="#">NOSOTROS</a></li>
+        <li><a href="#">CLIENTE</a></li>
+        <li><a href="#">NOTICIA</a></li>
+      </ul>
+      <a href="index.html" class="login-btn">Iniciar Sesión</a>
+    </nav>
+  </header>
 
-<main>
-  <h1>Registro de Nueva Cuenta</h1>
-  <section class="login-container">
-    <h2>Crear Cuenta</h2>
-    <form>
-      <select name="tipo-cliente" required>
-          <option value="" disabled selected>Seleccionar tipo de cliente</option>
-          <option value="empresas">Empresas</option>
-          <option value="personas">Personas</option>
-        </select>
-      <input type="text" placeholder="Nombre completo" required />
-      <input type="email" placeholder="Correo electrónico" required />
-      <input type="password" placeholder="Contraseña" required />
-      <input type="password" placeholder="Confirmar contraseña" required />
-      <input type="text" placeholder="Razon social" required />
-      <input type="text" placeholder="NIT" name="nit" pattern="[0-9\-]+" required />
-      <input type="text" placeholder="Nombre representante legal" required />
-      <input type="text" placeholder="Dirección" name="direccion" autocomplete="street-address" required />
-      <button type="submit">Registrar</button>
-      <div class="divider">o</div>
-      <button type="button" class="google-btn">
-        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
-        Registrarse con Google
-      </button>
-      <a href="index.html" class="link">¿Ya tienes cuenta? Inicia Sesión</a>
-    </form>
-  </section>
-</main>
+  <main>
+    <h1>Registro de Nueva Cuenta</h1>
+    <section class="login-container">
+      <h2>Crear Cuenta</h2>
+      <form id="registroForm">
+        <!-- Selector de tipo de cliente -->
+        <div class="form-group">
+          <label for="tipoCliente">Tipo de cliente</label>
+          <select id="tipoCliente" onchange="cambiarFormulario()" required>
+            <option value="" disabled selected>Seleccionar tipo de cliente</option>
+            <option value="personas">Personas</option>
+            <option value="empresas">Empresas</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Correo electrónico" required />
+          <div class="error-message" id="email-error"></div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Contraseña" minlength="8" required />
+          <div class="error-message" id="password-error"></div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" minlength="8" required />
+          <div class="error-message" id="confirmPassword-error"></div>
+        </div>
+
+        <!-- Campos específicos para PERSONAS -->
+        <div id="camposPersonas" class="campo-dinamico">
+          <div class="form-group">
+            <input type="text" id="nombreCompleto" placeholder="Nombre completo" />
+            <div class="error-message" id="nombreCompleto-error"></div>
+          </div>
+        </div>
+
+        <!-- Campos específicos para EMPRESAS -->
+        <div id="camposEmpresas" class="campo-dinamico">
+          <div class="form-group">
+            <input type="text" id="razonSocial" placeholder="Razón social" />
+            <div class="error-message" id="razonSocial-error"></div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="nit" placeholder="NIT (Ej: 123456789-0)" pattern="[0-9]{9}-[0-9]" />
+            <div class="error-message" id="nit-error"></div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="representanteLegal" placeholder="Nombre representante legal" />
+            <div class="error-message" id="representanteLegal-error"></div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="direccion" placeholder="Dirección" autocomplete="street-address" />
+            <div class="error-message" id="direccion-error"></div>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="telefono" placeholder="Teléfono corporativo" pattern="[0-9]{7,10}" />
+            <div class="error-message" id="telefono-error"></div>
+          </div>
+        </div>
+
+        <button type="submit">Registrar</button>
+
+        <div class="divider">o</div>
+
+        <button type="button" class="google-btn">
+          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+          Registrarse con Google
+        </button>
+
+        <a href="index.html" class="link">¿Ya tienes cuenta? Inicia Sesión</a>
+      </form>
+    </section>
+  </main>
+
+  <script src="/frontend/js/registro.js"></script>
 </body>
 </html>
