@@ -25,6 +25,11 @@
 <section class="login-container">
 <h2>Iniciar Sesión</h2>
 <form>
+    <select name="tipo-cliente" required>
+          <option value="" disabled selected>Seleccionar tipo de cliente</option>
+          <option value="empresas">Empresas</option>
+          <option value="personas">Personas</option>
+        </select>
 <input type="email" placeholder="Correo Electrónico" required />
 <input type="password" placeholder="Contraseña" required />
 <button type="submit">Iniciar Sesión</button>
