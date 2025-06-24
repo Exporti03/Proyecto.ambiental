@@ -25,6 +25,11 @@
   <section class="login-container">
     <h2>Crear Cuenta</h2>
     <form>
+      <select name="tipo-cliente" required>
+          <option value="" disabled selected>Seleccionar tipo de cliente</option>
+          <option value="empresas">Empresas</option>
+          <option value="personas">Personas</option>
+        </select>
       <input type="text" placeholder="Nombre completo" required />
       <input type="email" placeholder="Correo electrónico" required />
       <input type="password" placeholder="Contraseña" required />
