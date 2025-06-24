@@ -351,3 +351,42 @@ button:hover {
     color: #333;
     line-height: 1.6;
 }
+
+.nosotros-main {
+  padding: 40px 20px 80px;
+  text-align: center;
+}
+
+.nosotros-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.nosotros-container h2 {
+  margin-top: 30px;
+  color: #1b4d3e;
+  font-size: 20px;
+}
+
+.nosotros-container p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.valores {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+  color: #1e1e1e;
+}
+
+.contacto-nosotros {
+  margin-top: 30px;
+  text-align: center;
+}
