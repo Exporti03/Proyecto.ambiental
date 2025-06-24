@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crear Cuenta</title>
   <link rel="stylesheet" href="/frontend/css/style.css" />
+  <style>
+    /* Añade el CSS de arriba aquí temporalmente para probar */
+  </style>
 </head>
 <body>
   <header>
@@ -24,10 +27,10 @@
     <h1>Registro de Nueva Cuenta</h1>
     <section class="login-container">
       <h2>Crear Cuenta</h2>
-      <form id="registroForm">
+      <form id="registroForm" class="form-registro">
+        
         <!-- Selector de tipo de cliente -->
         <div class="form-group">
-          <label for="tipoCliente">Tipo de cliente</label>
           <select id="tipoCliente" onchange="cambiarFormulario()" required>
             <option value="" disabled selected>Seleccionar tipo de cliente</option>
             <option value="personas">Personas</option>
@@ -82,16 +85,22 @@
           </div>
         </div>
 
-        <button type="submit">Registrar</button>
+        <div class="form-group">
+          <button type="submit">Registrar</button>
+        </div>
 
         <div class="divider">o</div>
 
-        <button type="button" class="google-btn">
-          <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
-          Registrarse con Google
-        </button>
+        <div class="form-group">
+          <button type="button" class="google-btn">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo">
+            Registrarse con Google
+          </button>
+        </div>
 
-        <a href="index.html" class="link">¿Ya tienes cuenta? Inicia Sesión</a>
+        <div class="form-group">
+          <a href="index.html" class="link">¿Ya tienes cuenta? Inicia Sesión</a>
+        </div>
       </form>
     </section>
   </main>

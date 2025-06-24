@@ -73,7 +73,7 @@ main {
 /* Inputs y selects */
 input, select {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -248,5 +248,60 @@ button:hover {
         padding: 15px 10px;
         margin: 0 5px;
         width: calc(100% - 10px);
+    }
+}
+/* Añade esto al final de tu CSS existente */
+
+/* Contenedor principal - igual para ambos formularios */
+.login-container {
+    max-width: 400px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+/* Formularios - ocupar todo el ancho disponible */
+.login-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Elementos de formulario - ancho consistente */
+.login-container select,
+.login-container input,
+.login-container button,
+.login-container .google-btn,
+.login-container .link {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Grupos de formulario - sin margen extra */
+.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Campos dinámicos - ajuste de ancho */
+.campo-dinamico {
+    width: 100%;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .login-container {
+        width: calc(100% - 30px);
+        padding: 20px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: calc(100% - 20px);
+        padding: 15px 10px;
     }
 }
