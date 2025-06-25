@@ -15,31 +15,65 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.id === 'nit') validarNIT();
     });
 
-    document.getElementById('registroForm').addEventListener('submit', function (e) {
+    // ✅ ENVÍO DEL FORMULARIO AL BACKEND
+    document.getElementById('registroForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const isPasswordValid = validarLongitudContrasena();
         const isConfirmValid = validarContrasenas();
+        const tipo = tipoCliente.value === 'personas' ? 'personal' : 'empresa';
 
         if (!isPasswordValid || !isConfirmValid) return;
+        if (tipo === 'empresa' && !validarNIT()) return;
 
-        if (tipoCliente.value === 'personas') {
-            const nombre = document.getElementById('nombreCompleto').value;
-            alert(`Registro exitoso para Persona:\nNombre: ${escapeHtml(nombre)}\nEmail: ${document.getElementById('email').value}`);
-        } else if (tipoCliente.value === 'empresas') {
-            if (!validarNIT()) return;
+        // 📥 Captura de campos comunes
+        const correo = document.getElementById('email').value;
+        const contrasena = document.getElementById('password').value;
 
-            const razonSocial = escapeHtml(document.getElementById('razonSocial').value);
-            const nit = escapeHtml(document.getElementById('nit').value);
-            const representante = escapeHtml(document.getElementById('representanteLegal').value);
-            const direccion = escapeHtml(document.getElementById('direccion').value);
-            alert(`Registro exitoso para Empresa:\nRazón Social: ${razonSocial}\nNIT: ${nit}\nRepresentante: ${representante}\nDirección: ${direccion}`);
+        // 📦 Crear objeto a enviar
+        const data = {
+            tipo,
+            correo,
+            contrasena
+        };
+
+        // 📌 Agregar datos extra según el tipo
+        if (tipo === 'personal') {
+            data.nombreCompleto = document.getElementById('nombreCompleto').value;
+        } else {
+            data.razonSocial = document.getElementById('razonSocial').value;
+            data.nit = document.getElementById('nit').value;
+            data.representanteLegal = document.getElementById('representanteLegal').value;
+            data.direccion = document.getElementById('direccion').value;
+            data.telefono = document.getElementById('telefono').value;
         }
 
-        this.reset();
-        ocultarCamposDinamicos();
+        // 🚀 Enviar datos al backend con fetch
+        try {
+            const response = await fetch('http://localhost:3000/api/registrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('✅ Registro exitoso');
+                this.reset();
+                ocultarCamposDinamicos();
+            } else {
+                alert('❌ Error: ' + (result.error || 'No se pudo registrar'));
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+            alert('❌ Error de red al registrar');
+        }
     });
 
+    // 🧩 Funciones auxiliares
     function cambiarFormulario() {
         const valor = tipoCliente.value;
         ocultarCamposDinamicos();
