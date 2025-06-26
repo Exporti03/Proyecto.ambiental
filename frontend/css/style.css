@@ -257,3 +257,23 @@ button:hover {
         padding: 15px 10px;
     }
 }
+
+.menu li a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #1b4d3e;
+  transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+  width: 100%;
+}
