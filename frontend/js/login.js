@@ -1,5 +1,3 @@
-// login.js
-
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('formLogin');
 
@@ -26,8 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (response.ok) {
         alert(data.mensaje);
-        localStorage.setItem('usuario', JSON.stringify(data.usuario)); // Guarda usuario con nombre
-        window.location.href = 'dashboard.html';
+        localStorage.setItem('usuario', JSON.stringify(data.usuario)); // Guarda datos del usuario
+
+        // Redirige según tipo
+        if (data.usuario.tipo === 'personal') {
+          window.location.href = 'dashboard.html';
+        } else if (data.usuario.tipo === 'empresa') {
+          window.location.href = 'dashboard.empresa.html';
+        }
+
       } else {
         alert(data.error || 'Correo o contraseña incorrectos');
       }
