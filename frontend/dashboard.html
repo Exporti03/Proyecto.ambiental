@@ -41,20 +41,6 @@
       </section>
     </main>
   </div>
-
-  <script>
-    // Mostrar nombre en dashboard
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
-    if (usuario && usuario.nombre) {
-      document.querySelector('.perfil .usuario').textContent = `👤 ${usuario.nombre}`;
-    }
-
-    // Cerrar sesión
-    const logoutBtn = document.getElementById('logoutBtn');
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem('usuario');
-      window.location.href = 'index.html'; // Página login
-    });
-  </script>
+    <script src="js/dashboard.js" defer></script>
 </body>
 </html>
