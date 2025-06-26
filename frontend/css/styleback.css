@@ -1,16 +1,17 @@
-/* styleback.css */
-
+/* Estilos generales */
 body {
   margin: 0;
   font-family: sans-serif;
   display: flex;
 }
 
+/* Contenedor principal */
 .dashboard {
   display: flex;
   width: 100%;
 }
 
+/* Sidebar */
 .sidebar {
   width: 220px;
   background: #1b4d3e;
@@ -33,21 +34,25 @@ body {
   cursor: pointer;
 }
 
+/* Contenido principal */
 .main-content {
   flex-grow: 1;
   background: #ecf0f1;
   padding: 20px;
 }
 
+/* Barra superior */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Mueve todo hacia la derecha */
   background: white;
   padding: 10px 20px;
   margin-bottom: 20px;
   border-radius: 8px;
   align-items: center;
+  gap: 20px; /* espacio entre elementos */
 }
+
 
 .navbar input[type="text"] {
   width: 60%;
@@ -56,6 +61,7 @@ body {
   border-radius: 6px;
 }
 
+/* Perfil del usuario */
 .perfil {
   display: flex;
   align-items: center;
@@ -68,14 +74,17 @@ body {
   font-size: 1.3rem;
 }
 
+/* Etiqueta con nombre de usuario */
 .perfil .usuario {
   background-color: #d5e8d4;
   padding: 6px 14px;
   border-radius: 20px;
   color: #1b4d3e;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
+/* Botón de cerrar sesión */
 .btn-cerrar-sesion {
   background-color: #e74c3c;
   border: none;
@@ -91,6 +100,7 @@ body {
   background-color: #c0392b;
 }
 
+/* Tarjetas de información */
 .content {
   display: flex;
   gap: 20px;
@@ -105,6 +115,7 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Gráfica */
 .grafica {
   background: white;
   padding: 20px;

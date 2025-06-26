@@ -22,10 +22,10 @@
 
     <main class="main-content">
       <header class="navbar">
-        <input type="text" placeholder="Buscar..." />
         <div class="perfil">
           <span class="notificacion">🔔</span>
-          <span class="usuario">👤 Usuario</span>
+          <!-- 👇 Cambiado para que tenga el id correcto -->
+          <span class="usuario" id="user-button">👤 Usuario</span>
           <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
       </header>
@@ -41,6 +41,8 @@
       </section>
     </main>
   </div>
-    <script src="js/dashboard.js" defer></script>
+
+  <!-- Carga del script -->
+  <script src="js/dashboard.js" defer></script>
 </body>
 </html>

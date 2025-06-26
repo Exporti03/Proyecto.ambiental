@@ -3,7 +3,6 @@ const router = express.Router();
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 
-// Conexión a la base de datos
 const db = mysql.createPool({
   host: 'localhost',
   user: 'root',
@@ -11,7 +10,6 @@ const db = mysql.createPool({
   database: 'proyectos'
 });
 
-// Ruta para login
 router.post('/login', async (req, res) => {
   try {
     const { correo, contrasena, tipo } = req.body;
@@ -20,7 +18,6 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Faltan campos requeridos' });
     }
 
-    // Buscar usuario
     const [rows] = await db.query('SELECT * FROM usuarios WHERE correo = ? AND tipo = ?', [correo, tipo]);
 
     if (rows.length === 0) {
@@ -66,4 +63,3 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-
