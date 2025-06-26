@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (data.usuario.tipo === 'personal') {
           window.location.href = 'dashboard.html';
         } else if (data.usuario.tipo === 'empresa') {
-          window.location.href = 'dashboard.empresa.html';
+          window.location.href = 'dashboard_empresa.html';
         }
 
       } else {
