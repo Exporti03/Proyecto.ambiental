@@ -28,3 +28,37 @@ CREATE TABLE datos_empresas (
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
+-- Tabla de proyectos
+CREATE TABLE proyectos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  empresa_id INT,
+  titulo VARCHAR(255) NOT NULL,
+  descripcion TEXT,
+  estado ENUM('pendiente', 'en_proceso', 'finalizado') DEFAULT 'pendiente',
+  fecha_inicio DATE,
+  fecha_entrega DATE,
+  FOREIGN KEY (empresa_id) REFERENCES usuarios(id)
+);
+
+-- Relación persona-empresa (clientes vinculados)
+CREATE TABLE empresa_clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  empresa_id INT,
+  cliente_id INT,
+  FOREIGN KEY (empresa_id) REFERENCES usuarios(id),
+  FOREIGN KEY (cliente_id) REFERENCES usuarios(id)
+);
+
+-- Documentos subidos por clientes a sus proyectos
+CREATE TABLE documentos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  proyecto_id INT,
+  cliente_id INT,
+  nombre_archivo VARCHAR(255),
+  url_archivo TEXT,
+  fecha_subida TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (proyecto_id) REFERENCES proyectos(id),
+  FOREIGN KEY (cliente_id) REFERENCES usuarios(id)
+);
+
+
