@@ -4,9 +4,14 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const correo = document.getElementById('correo').value;
-    const contrasena = document.getElementById('contrasena').value;
+    const correo = document.getElementById('correo').value.trim();
+    const contrasena = document.getElementById('contrasena').value.trim();
     const tipoCliente = document.getElementById('tipoCliente').value;
+
+    if (!correo || !contrasena) {
+      alert('Por favor completa todos los campos.');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:3000/api/login', {
@@ -18,14 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json();
 
       if (response.ok) {
-        alert(data.mensaje || 'Inicio de sesión exitoso');
+        alert(data.mensaje);
+
+        // Guardar info usuario para usar en dashboard
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+        // Redirigir al dashboard
         window.location.href = 'dashboard.html';
       } else {
         alert(data.error || 'Correo o contraseña incorrectos');
       }
     } catch (error) {
       alert('Error de conexión con el servidor');
-      console.error(error);
+      console.error('Login error:', error);
     }
   });
 });

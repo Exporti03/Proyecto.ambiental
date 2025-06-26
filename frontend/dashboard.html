@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
-  <link rel="stylesheet" href="/frontend/css/styleback.css" />
+  <link rel="stylesheet" href="css/styleback.css" />
 </head>
 <body>
   <div class="dashboard">
@@ -24,8 +24,9 @@
       <header class="navbar">
         <input type="text" placeholder="Buscar..." />
         <div class="perfil">
-          <span>🔔</span>
-          <span>👤 Usuario</span>
+          <span class="notificacion">🔔</span>
+          <span class="usuario">👤 Usuario</span>
+          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
       </header>
 
@@ -41,5 +42,21 @@
       </section>
     </main>
   </div>
+
+  <script>
+    // Mostrar correo usuario en el dashboard
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    if (usuario && usuario.correo) {
+      document.querySelector('.perfil .usuario').textContent = `👤 ${usuario.correo}`;
+    }
+
+    // Cerrar sesión: eliminar usuario y volver al login
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('usuario');
+      window.location.href = 'index.html'; // Cambia por la ruta de tu página de login
+    });
+  </script>
 </body>
 </html>
+
