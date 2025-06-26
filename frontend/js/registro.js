@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.id === 'nit') validarNIT();
     });
 
-    // ✅ ENVÍO DEL FORMULARIO AL BACKEND
+    // ENVÍO DEL FORMULARIO AL BACKEND
     document.getElementById('registroForm').addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -26,18 +26,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!isPasswordValid || !isConfirmValid) return;
         if (tipo === 'empresa' && !validarNIT()) return;
 
-        // 📥 Captura de campos comunes
+        // Captura de campos comunes
         const correo = document.getElementById('email').value;
         const contrasena = document.getElementById('password').value;
 
-        // 📦 Crear objeto a enviar
+        // Crear objeto a enviar
         const data = {
             tipo,
             correo,
             contrasena
         };
 
-        // 📌 Agregar datos extra según el tipo
+        // Agregar datos extra según el tipo
         if (tipo === 'personal') {
             data.nombreCompleto = document.getElementById('nombreCompleto').value;
         } else {
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
             data.telefono = document.getElementById('telefono').value;
         }
 
-        // 🚀 Enviar datos al backend con fetch
         try {
             const response = await fetch('http://localhost:3000/api/registrar', {
                 method: 'POST',
@@ -64,6 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('✅ Registro exitoso');
                 this.reset();
                 ocultarCamposDinamicos();
+
+                // Redirigir al login después de 1 segundo
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // Cambia si tu login está en otra ruta
+                }, 1000);
             } else {
                 alert('❌ Error: ' + (result.error || 'No se pudo registrar'));
             }
@@ -73,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 🧩 Funciones auxiliares
+    // Funciones auxiliares
     function cambiarFormulario() {
         const valor = tipoCliente.value;
         ocultarCamposDinamicos();
@@ -142,15 +146,5 @@ document.addEventListener('DOMContentLoaded', function () {
             nit.classList.remove('error');
             return true;
         }
-    }
-
-    function escapeHtml(str) {
-        return str.replace(/[&<>"']/g, tag => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;'
-        }[tag]));
     }
 });
