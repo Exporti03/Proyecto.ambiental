@@ -37,26 +37,24 @@
       </section>
 
       <section class="grafica">
-        <!-- Aquí puede ir una gráfica -->
         <p>Gráfica de avance de proyectos</p>
       </section>
     </main>
   </div>
 
   <script>
-    // Mostrar correo usuario en el dashboard
+    // Mostrar nombre en dashboard
     const usuario = JSON.parse(localStorage.getItem('usuario'));
-    if (usuario && usuario.correo) {
-      document.querySelector('.perfil .usuario').textContent = `👤 ${usuario.correo}`;
+    if (usuario && usuario.nombre) {
+      document.querySelector('.perfil .usuario').textContent = `👤 ${usuario.nombre}`;
     }
 
-    // Cerrar sesión: eliminar usuario y volver al login
+    // Cerrar sesión
     const logoutBtn = document.getElementById('logoutBtn');
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('usuario');
-      window.location.href = 'index.html'; // Cambia por la ruta de tu página de login
+      window.location.href = 'index.html'; // Página login
     });
   </script>
 </body>
 </html>
-

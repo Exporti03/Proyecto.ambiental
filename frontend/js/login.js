@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const contrasena = document.getElementById('contrasena').value.trim();
     const tipoCliente = document.getElementById('tipoCliente').value;
 
-    if (!correo || !contrasena) {
+    if (!correo || !contrasena || !tipoCliente) {
       alert('Por favor completa todos los campos.');
       return;
     }
@@ -24,11 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (response.ok) {
         alert(data.mensaje);
-
-        // Guardar info usuario para usar en dashboard
-        localStorage.setItem('usuario', JSON.stringify(data.usuario));
-
-        // Redirigir al dashboard
+        localStorage.setItem('usuario', JSON.stringify(data.usuario)); // Guarda el nombre también
         window.location.href = 'dashboard.html';
       } else {
         alert(data.error || 'Correo o contraseña incorrectos');

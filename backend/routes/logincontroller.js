@@ -20,6 +20,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Faltan campos requeridos' });
     }
 
+    // Buscar usuario
     const [rows] = await db.query('SELECT * FROM usuarios WHERE correo = ? AND tipo = ?', [correo, tipo]);
 
     if (rows.length === 0) {
@@ -33,14 +34,31 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
-    // Enviar información básica sin contraseña
+    // Obtener nombre según tipo
+    let nombre = 'Usuario';
+
+    if (tipo === 'personal') {
+      const [resPersonal] = await db.query('SELECT nombre FROM datos_personales WHERE usuario_id = ?', [usuario.id]);
+      if (resPersonal.length > 0) {
+        nombre = resPersonal[0].nombre;
+      }
+    } else if (tipo === 'empresa') {
+      const [resEmpresa] = await db.query('SELECT nombre_empresa AS nombre FROM datos_empresas WHERE usuario_id = ?', [usuario.id]);
+      if (resEmpresa.length > 0) {
+        nombre = resEmpresa[0].nombre;
+      }
+    }
+
+    // Enviar datos seguros, incluyendo nombre
     const usuarioSeguro = {
       id: usuario.id,
       correo: usuario.correo,
-      tipo: usuario.tipo
+      tipo: usuario.tipo,
+      nombre: nombre
     };
 
     res.status(200).json({ mensaje: 'Inicio de sesión exitoso', usuario: usuarioSeguro });
+
   } catch (error) {
     console.error('Error en /login:', error);
     res.status(500).json({ error: 'Error en el servidor', detalles: error.message });
@@ -48,3 +66,4 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
