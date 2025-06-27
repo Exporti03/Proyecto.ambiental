@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Usuario - Proyectos</title>
+  <link rel="stylesheet" href="css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Usuario</h2>
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="busca.empresa.html">Empresas</a></li>
+        <li><a href="proyecto.usuario.html" class="active">Proyectos</a></li>
+        <li><a href="documento.usuario.html">Documentos</a></li>
+        <li><a href="certificado.usuario.html">Certificados</a></li>
+        <li><a href="perfil_usuario.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="proyectos">
+        <h2>Mis Proyectos</h2>
+
+        <div class="acciones-proyectos">
+          <input type="search" id="buscarProyecto" placeholder="Buscar proyecto..." />
+          <select id="filtroEstado">
+            <option value="">Filtrar por estado</option>
+            <option value="en-proceso">En proceso</option>
+            <option value="aprobado">Aprobado</option>
+            <option value="rechazado">Rechazado</option>
+            <option value="finalizado">Finalizado</option>
+          </select>
+          <button class="btn-nuevo">+ Nuevo Proyecto</button>
+        </div>
+
+        <table class="tabla-proyectos" aria-label="Lista de proyectos">
+          <thead>
+            <tr>
+              <th>Nombre del Proyecto</th>
+              <th>Estado</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Fin Estimada</th>
+              <th>Progreso</th>
+              <th>Responsable / Empresa</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Proyecto Ambiental ABC</td>
+              <td><span class="estado en-proceso">En proceso</span></td>
+              <td>2024-01-10</td>
+              <td>2024-04-15</td>
+              <td>
+                <progress value="65" max="100">65%</progress>
+              </td>
+              <td>EcoSoluciones Ltda.</td>
+              <td>
+                <button class="btn-ver" title="Ver detalles">👁️</button>
+                <button class="btn-editar" title="Editar">✏️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Reforestación XYZ</td>
+              <td><span class="estado aprobado">Aprobado</span></td>
+              <td>2023-11-01</td>
+              <td>2024-03-01</td>
+              <td>
+                <progress value="100" max="100">100%</progress>
+              </td>
+              <td>Verde S.A.</td>
+              <td>
+                <button class="btn-ver" title="Ver detalles">👁️</button>
+                <button class="btn-editar" title="Editar">✏️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <!-- Más proyectos -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

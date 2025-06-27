@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Usuario - Empresas</title>
+  <link rel="stylesheet" href="css/styleback.css" />
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Usuario</h2>
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="busca.empresa.html" class="active">Empresas</a></li>
+        <li><a href="proyecto.usuario.html">Proyectos</a></li>
+        <li><a href="documento.usuario.html">Documentos</a></li>
+        <li><a href="certificado.usuario.html">Certificados</a></li>
+        <li><a href="perfil_usuario.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="empresas">
+        <h2>Empresas Asociadas</h2>
+
+        <div class="acciones-empresas">
+          <input type="search" id="buscarEmpresa" placeholder="Buscar empresa..." />
+          <button class="btn-agregar">+ Agregar Empresa</button>
+        </div>
+
+        <table class="tabla-empresas" aria-label="Lista de empresas asociadas">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Contacto</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Empresa Verde S.A.</td>
+              <td>contacto@verde.com</td>
+              <td><span class="estado activo">Activo</span></td>
+              <td>
+                <button class="btn-editar" title="Editar">✏️</button>
+                <button class="btn-ver" title="Ver detalles">👁️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <tr>
+              <td>EcoSoluciones Ltda.</td>
+              <td>info@ecosoluciones.com</td>
+              <td><span class="estado inactivo">Inactivo</span></td>
+              <td>
+                <button class="btn-editar" title="Editar">✏️</button>
+                <button class="btn-ver" title="Ver detalles">👁️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <!-- Más filas si es necesario -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

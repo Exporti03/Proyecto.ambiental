@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <title>Dashboard Empresa</title>
   <link rel="stylesheet" href="css/styleback.css" />
 </head>
 <body>
@@ -11,12 +11,12 @@
     <aside class="sidebar">
       <h2>Portal Empresa</h2>
       <ul>
-        <li>Inicio</li>
-        <li>Clientes</li>
-        <li>Proyectos</li>
-        <li>documentos</li>
-        <li>Certificados</li>
-        <li>Perfil</li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Clientes</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Documentos</a></li>
+        <li><a href="#">Certificados</a></li>
+        <li><a href="#">Perfil</a></li>
       </ul>
     </aside>
 
@@ -24,7 +24,6 @@
       <header class="navbar">
         <div class="perfil">
           <span class="notificacion">🔔</span>
-          <!-- 👇 Cambiado para que tenga el id correcto -->
           <span class="usuario" id="user-button">👤 Usuario</span>
           <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
@@ -35,11 +34,9 @@
         <div class="card">Certificados Emitidos: 34</div>
         <div class="card">Proyectos Activos: 7</div>
       </section>
-
     </main>
   </div>
 
-  <!-- Carga del script -->
   <script src="js/dashboard.js" defer></script>
 </body>
 </html>

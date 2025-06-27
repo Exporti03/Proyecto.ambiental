@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <title>Mi Perfil</title>
   <link rel="stylesheet" href="css/styleback.css" />
 </head>
 <body>
@@ -19,24 +19,32 @@
         <li><a href="perfil_usuario.html">Perfil</a></li>
       </ul>
     </aside>
+    </aside>
 
     <main class="main-content">
-      <header class="navbar">
-        <div class="perfil">
-          <span class="notificacion">🔔</span>
-          <span class="usuario" id="user-button">👤 Usuario</span>
-          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
-        </div>
-      </header>
+      <section class="perfil-usuario">
+        <h2>Mi Perfil</h2>
+        
+        <div class="perfil-info">
+          <div class="foto-perfil">
+            👤
+          </div>
 
-      <section class="content">
-        <div class="card">Solicitudes Pendientes: 12</div>
-        <div class="card">Certificados Emitidos: 34</div>
-        <div class="card">Proyectos Activos: 7</div>
+          <div class="datos">
+            <p><strong>Nombre:</strong> Juan Pérez</p>
+            <p><strong>Correo:</strong> juan@email.com</p>
+            <p><strong>Tipo:</strong> Persona</p>
+            <p><strong>Registro:</strong> 2024-01-01</p>
+          </div>
+        </div>
+
+        <div class="acciones-perfil">
+          <button>Editar Datos</button>
+          <button>Cambiar Contraseña</button>
+        </div>
       </section>
     </main>
   </div>
-
-  <script src="js/dashboard.js" defer></script>
 </body>
 </html>
+

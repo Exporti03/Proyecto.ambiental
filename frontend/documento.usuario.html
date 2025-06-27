@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Usuario - Documentos</title>
+  <link rel="stylesheet" href="css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Usuario</h2>
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="busca.empresa.html">Empresas</a></li>
+        <li><a href="proyecto.usuario.html">Proyectos</a></li>
+        <li><a href="documento.usuario.html" class="active">Documentos</a></li>
+        <li><a href="certificado.usuario.html">Certificados</a></li>
+        <li><a href="perfil_usuario.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="documentos">
+        <h2>Mis Documentos</h2>
+
+        <div class="acciones-documentos">
+          <input type="search" id="buscarDocumento" placeholder="Buscar documento por nombre..." />
+          <select id="filtroTipo">
+            <option value="">Filtrar por tipo</option>
+            <option value="informe">Informe</option>
+            <option value="contrato">Contrato</option>
+            <option value="factura">Factura</option>
+            <option value="certificado">Certificado</option>
+          </select>
+          <select id="filtroEstado">
+            <option value="">Filtrar por estado</option>
+            <option value="pendiente">Pendiente de revisión</option>
+            <option value="aprobado">Aprobado</option>
+            <option value="rechazado">Rechazado</option>
+          </select>
+          <label for="subirArchivo" class="btn-subir" title="Subir nuevo documento">+ Subir Documento</label>
+          <input type="file" id="subirArchivo" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png" style="display:none" />
+        </div>
+
+        <table class="tabla-documentos" aria-label="Lista de documentos">
+          <thead>
+            <tr>
+              <th>Nombre del Documento</th>
+              <th>Tipo</th>
+              <th>Fecha de subida</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Contrato Servicios 2024.pdf</td>
+              <td>Contrato</td>
+              <td>2024-01-15</td>
+              <td><span class="estado aprobado">Aprobado</span></td>
+              <td>
+                <button class="btn-ver" title="Ver documento">👁️</button>
+                <button class="btn-descargar" title="Descargar">⬇️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Informe Ambiental Q1.pdf</td>
+              <td>Informe</td>
+              <td>2024-04-05</td>
+              <td><span class="estado pendiente">Pendiente</span></td>
+              <td>
+                <button class="btn-ver" title="Ver documento">👁️</button>
+                <button class="btn-descargar" title="Descargar">⬇️</button>
+                <button class="btn-eliminar" title="Eliminar">🗑️</button>
+              </td>
+            </tr>
+            <!-- Más filas aquí -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

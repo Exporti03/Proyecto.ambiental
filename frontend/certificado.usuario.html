@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Usuario - Certificados</title>
+  <link rel="stylesheet" href="css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Usuario</h2>
+      <ul>
+        <li><a href="dashboard.html">Inicio</a></li>
+        <li><a href="busca.empresa.html">Empresas</a></li>
+        <li><a href="proyecto.usuario.html">Proyectos</a></li>
+        <li><a href="documento.usuario.html">Documentos</a></li>
+        <li><a href="certificado.usuario.html" class="active">Certificados</a></li>
+        <li><a href="perfil_usuario.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section class="certificados">
+        <h2>Mis Certificados</h2>
+
+        <table class="tabla-certificados" aria-label="Lista de certificados">
+          <thead>
+            <tr>
+              <th>Número</th>
+              <th>Proyecto</th>
+              <th>Tipo</th>
+              <th>Fecha Emisión</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#00123</td>
+              <td>Reforestación XYZ</td>
+              <td>Certificación Ambiental</td>
+              <td>2024-05-20</td>
+              <td><span class="estado emitido">✔️ Emitido</span></td>
+              <td>
+                <button class="btn-ver" title="Ver">👁️</button>
+                <button class="btn-descargar" title="Descargar">⬇️</button>
+              </td>
+            </tr>
+            <tr>
+              <td>#00124</td>
+              <td>Proyecto ABC</td>
+              <td>Concepto Técnico</td>
+              <td>2024-06-10</td>
+              <td><span class="estado pendiente">⏳ En trámite</span></td>
+              <td>
+                <button class="btn-ver" title="Ver">👁️</button>
+              </td>
+            </tr>
+            <tr>
+              <td>#00125</td>
+              <td>EcoGestión</td>
+              <td>Licencia Ambiental</td>
+              <td>2024-06-01</td>
+              <td><span class="estado rechazado">❌ Rechazado</span></td>
+              <td>
+                <button class="btn-ver" title="Ver">👁️</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
