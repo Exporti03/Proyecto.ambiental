@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="dashboard">
+    <!-- Sidebar -->
     <aside class="sidebar">
       <h2>Portal Usuario</h2>
       <ul>
@@ -20,7 +21,9 @@
       </ul>
     </aside>
 
-        <main class="main-content">
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <!-- Barra superior -->
       <header class="navbar">
         <div class="perfil">
           <span class="notificacion">🔔</span>
@@ -29,11 +32,11 @@
         </div>
       </header>
 
-    <main class="main-content">
+      <!-- Sección de certificados -->
       <section class="certificados">
         <h2>Mis Certificados</h2>
 
-        <table class="tabla-certificados" aria-label="Lista de certificados">
+        <table class="tabla-empresas" aria-label="Lista de certificados">
           <thead>
             <tr>
               <th>Número</th>
@@ -50,7 +53,7 @@
               <td>Reforestación XYZ</td>
               <td>Certificación Ambiental</td>
               <td>2024-05-20</td>
-              <td><span class="estado emitido">✔️ Emitido</span></td>
+              <td><span class="estado activo">✔️ Emitido</span></td>
               <td>
                 <button class="btn-ver" title="Ver">👁️</button>
                 <button class="btn-descargar" title="Descargar">⬇️</button>
@@ -71,7 +74,7 @@
               <td>EcoGestión</td>
               <td>Licencia Ambiental</td>
               <td>2024-06-01</td>
-              <td><span class="estado rechazado">❌ Rechazado</span></td>
+              <td><span class="estado inactivo">❌ Rechazado</span></td>
               <td>
                 <button class="btn-ver" title="Ver">👁️</button>
               </td>
@@ -81,6 +84,8 @@
       </section>
     </main>
   </div>
+
   <script src="../js/dashboard.js" defer></script>
 </body>
 </html>
+

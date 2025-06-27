@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portal Usuario - Empresas</title>
   <link rel="stylesheet" href="../css/styleback.css" />
+</head>
 <body>
   <div class="dashboard">
+    <!-- Sidebar -->
     <aside class="sidebar">
       <h2>Portal Usuario</h2>
       <ul>
@@ -19,8 +21,9 @@
       </ul>
     </aside>
 
-   
+    <!-- Contenido principal -->
     <main class="main-content">
+      <!-- Barra superior -->
       <header class="navbar">
         <div class="perfil">
           <span class="notificacion">🔔</span>
@@ -29,11 +32,15 @@
         </div>
       </header>
 
+      <!-- Sección central -->
+      <section class="content">
+        <!-- Acciones -->
         <div class="acciones-empresas">
           <input type="search" id="buscarEmpresa" placeholder="Buscar empresa..." />
           <button class="btn-agregar">+ Agregar Empresa</button>
         </div>
 
+        <!-- Tabla -->
         <table class="tabla-empresas" aria-label="Lista de empresas asociadas">
           <thead>
             <tr>
@@ -64,12 +71,12 @@
                 <button class="btn-eliminar" title="Eliminar">🗑️</button>
               </td>
             </tr>
-            <!-- Más filas si es necesario -->
           </tbody>
         </table>
       </section>
     </main>
   </div>
+
   <script src="../js/dashboard.js" defer></script>
 </body>
 </html>

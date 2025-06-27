@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="dashboard">
+    <!-- Sidebar -->
     <aside class="sidebar">
       <h2>Portal Usuario</h2>
       <ul>
@@ -20,7 +21,9 @@
       </ul>
     </aside>
 
+    <!-- Contenido principal -->
     <main class="main-content">
+      <!-- Navbar -->
       <header class="navbar">
         <div class="perfil">
           <span class="notificacion">🔔</span>
@@ -29,13 +32,13 @@
         </div>
       </header>
 
-
-    <main class="main-content">
+      <!-- Sección Documentos -->
       <section class="documentos">
         <h2>Mis Documentos</h2>
 
         <div class="acciones-documentos">
           <input type="search" id="buscarDocumento" placeholder="Buscar documento por nombre..." />
+          
           <select id="filtroTipo">
             <option value="">Filtrar por tipo</option>
             <option value="informe">Informe</option>
@@ -43,12 +46,14 @@
             <option value="factura">Factura</option>
             <option value="certificado">Certificado</option>
           </select>
+
           <select id="filtroEstado">
             <option value="">Filtrar por estado</option>
             <option value="pendiente">Pendiente de revisión</option>
             <option value="aprobado">Aprobado</option>
             <option value="rechazado">Rechazado</option>
           </select>
+
           <label for="subirArchivo" class="btn-subir" title="Subir nuevo documento">+ Subir Documento</label>
           <input type="file" id="subirArchivo" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png" style="display:none" />
         </div>
@@ -92,6 +97,7 @@
       </section>
     </main>
   </div>
+
   <script src="../js/dashboard.js" defer></script>
 </body>
 </html>
