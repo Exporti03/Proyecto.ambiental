@@ -11,7 +11,7 @@
     <aside class="sidebar">
       <h2>Portal Empresa</h2>
       <ul>
-        <li><a href="deshboard_empresa.html">Inicio</a></li>
+        <li><a href="dashboard_empresa.html" class="active">Inicio</a></li>
         <li><a href="#">Clientes</a></li>
         <li><a href="#">Proyectos</a></li>
         <li><a href="#">Documentos</a></li>
@@ -23,16 +23,29 @@
     <main class="main-content">
       <header class="navbar">
         <div class="perfil">
-          <span class="notificacion">🔔</span>
-          <span class="usuario" id="user-button">👤 Usuario</span>
+          <span class="notificacion" title="Notificaciones">🔔</span>
+          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
           <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
       </header>
 
-      <section class="content">
-        <div class="card">Solicitudes Pendientes: 12</div>
-        <div class="card">Certificados Emitidos: 34</div>
-        <div class="card">Proyectos Activos: 7</div>
+      <!-- Contenido indicadores con estructura que usa tu CSS -->
+      <section class="content indicadores">
+        <div class="card">
+          <h3>Solicitudes Pendientes</h3>
+          <p>12</p>
+          <button class="btn-ver-detalles">Ver Detalles</button>
+        </div>
+        <div class="card">
+          <h3>Certificados Emitidos</h3>
+          <p>34</p>
+          <button class="btn-ver-detalles">Ver Detalles</button>
+        </div>
+        <div class="card">
+          <h3>Proyectos Activos</h3>
+          <p>7</p>
+          <button class="btn-ver-detalles">Ver Detalles</button>
+        </div>
       </section>
     </main>
   </div>

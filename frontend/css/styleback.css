@@ -1,7 +1,10 @@
-/* Estilo general */
+/* ====================
+   Estilo General
+==================== */
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f4;
   color: #333;
 }
@@ -11,18 +14,23 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar */
+/* ====================
+   Sidebar
+==================== */
+
 .sidebar {
   background-color: #1b4d3e;
   color: white;
   padding: 20px;
   width: 220px;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .sidebar h2 {
-  margin: 0 0 25px 0;
-  font-size: 20px;
+  margin: 0 0 25px;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .sidebar ul {
@@ -36,14 +44,14 @@ body {
 }
 
 .sidebar ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
   display: block;
   padding: 10px 15px;
+  color: #fff;
+  font-weight: 500;
   border-radius: 6px;
+  text-decoration: none;
   position: relative;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .sidebar ul li a::after {
@@ -72,22 +80,31 @@ body {
   color: #d1f0e3;
 }
 
-/* Contenido principal */
+/* ====================
+   Contenido Principal
+==================== */
+
 .main-content {
   flex-grow: 1;
+  background-color: #fff;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Navbar */
+/* ====================
+   Navbar
+==================== */
+
 .navbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .perfil {
@@ -97,90 +114,133 @@ body {
 }
 
 .perfil .notificacion {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
 }
 
 .perfil .usuario {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .btn-cerrar-sesion {
   padding: 8px 14px;
-  border: none;
   background-color: #e74c3c;
   color: white;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-cerrar-sesion:hover {
   background-color: #c0392b;
 }
 
-/* Contenedor común */
-.content {
+/* ====================
+   Contenedores Comunes
+==================== */
+
+.content,
+.content.indicadores {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* ====================
+   Indicadores (Inicio)
+==================== */
+
+.content.indicadores .card {
+  background-color: #1b4d3e;
+  color: white;
+  border-radius: 10px;
+  flex: 1 1 200px;
+  max-width: 250px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-/* Empresas */
-.acciones-empresas {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 0; /* Sin espacio extra */
+.content.indicadores .card h3 {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  font-size: 20px;
 }
 
-.acciones-empresas input[type="search"] {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+.content.indicadores .card p {
+  font-size: 36px;
+  margin: 0 0 15px 0;
+  font-weight: 900;
 }
 
-.btn-agregar {
-  background-color: #1b4d3e;
+.btn-ver-detalles {
+  padding: 8px 14px;
+  background-color: #27ae60;
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 10px 20px;
-  font-weight: bold;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
   transition: background-color 0.3s ease;
+  align-self: stretch;
+  text-align: center;
 }
 
-.btn-agregar:hover {
-  background-color: #163b2f;
+.btn-ver-detalles:hover {
+  background-color: #1e8449;
 }
 
-.tabla-empresas {
+/* ====================
+   Tablas Generales (Empresas, Documentos, Certificados, Proyectos)
+==================== */
+
+table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.tabla-empresas th,
-.tabla-empresas td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
   font-size: 14px;
+  margin-top: 15px;
 }
 
-.tabla-empresas th {
+thead tr {
   background-color: #1b4d3e;
   color: white;
   font-weight: 600;
 }
 
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ====================
+   Estados (estados de proyectos, empresas, certificados)
+==================== */
+
 .estado {
-  padding: 4px 8px;
+  padding: 5px 12px;
   border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 13px;
   color: white;
   display: inline-block;
   white-space: nowrap;
@@ -190,11 +250,13 @@ body {
   background-color: #27ae60;
 }
 
-.estado.inactivo {
+.estado.inactivo,
+.estado.rechazado {
   background-color: #e74c3c;
 }
 
-.estado.aprobado {
+.estado.aprobado,
+.estado.emitido {
   background-color: #27ae60;
 }
 
@@ -202,19 +264,14 @@ body {
   background-color: #f39c12;
 }
 
-.estado.rechazado {
-  background-color: #e74c3c;
-}
-
-.estado.emitido {
-  background-color: #27ae60;
-}
-
 .estado.en-proceso {
   background-color: #2980b9;
 }
 
-/* Botones de acción */
+/* ====================
+   Botones de acción en tablas
+==================== */
+
 .btn-editar,
 .btn-ver,
 .btn-eliminar,
@@ -222,126 +279,103 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   margin-right: 8px;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .btn-editar:hover {
   color: #2980b9;
+  background-color: rgba(41, 128, 185, 0.1);
 }
 
 .btn-ver:hover {
   color: #27ae60;
+  background-color: rgba(39, 174, 96, 0.1);
 }
 
 .btn-eliminar:hover {
   color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
 }
 
 .btn-descargar:hover {
   color: #2980b9;
+  background-color: rgba(41, 128, 185, 0.1);
 }
 
-/* Estilos para certificados */
-.tabla-certificados,
-.tabla-documentos,
-.tabla-proyectos {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
+/* ====================
+   Formularios y acciones
+==================== */
 
-.tabla-certificados th,
-.tabla-certificados td,
-.tabla-documentos th,
-.tabla-documentos td,
-.tabla-proyectos th,
-.tabla-proyectos td {
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  text-align: left;
-  font-size: 14px;
-}
-
-/* Secciones específicas */
-.certificados h2,
-.documentos h2,
-.proyectos h2,
-.perfil-usuario h2 {
-  margin-bottom: 15px;
-}
-
-/* Acciones - Documentos */
-.acciones-documentos {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.acciones-documentos input[type="search"],
-.acciones-documentos select {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.btn-subir {
-  background-color: #1b4d3e;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  user-select: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-subir:hover {
-  background-color: #163b2f;
-}
-
-/* Acciones - Proyectos */
+.acciones-empresas,
+.acciones-documentos,
 .acciones-proyectos {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
+.acciones-empresas input[type="search"],
+.acciones-documentos input[type="search"],
 .acciones-proyectos input[type="search"],
+.acciones-documentos select,
 .acciones-proyectos select {
-  padding: 8px 10px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  min-width: 180px;
+  transition: border-color 0.3s ease;
 }
 
+.acciones-empresas input[type="search"]:focus,
+.acciones-documentos input[type="search"]:focus,
+.acciones-proyectos input[type="search"]:focus,
+.acciones-documentos select:focus,
+.acciones-proyectos select:focus {
+  border-color: #1b4d3e;
+  outline: none;
+}
+
+.btn-agregar,
+.btn-subir,
 .btn-nuevo {
   background-color: #1b4d3e;
   color: white;
-  padding: 8px 15px;
   border: none;
   border-radius: 6px;
+  padding: 8px 18px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
+.btn-agregar:hover,
+.btn-subir:hover,
 .btn-nuevo:hover {
   background-color: #163b2f;
 }
 
-/* Perfil usuario */
+.btn-subir {
+  user-select: none;
+  display: inline-block;
+}
+
+/* ====================
+   Perfil usuario
+==================== */
+
 .perfil-usuario .perfil-info {
   display: flex;
   gap: 20px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .foto-perfil {
@@ -351,14 +385,12 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-
-  /* Centrado perfecto del ícono */
   display: flex;
   justify-content: center;
   align-items: center;
-
+  line-height: 1;
+  padding: 5px;
   user-select: none;
-  line-height: 1; /* Evita desplazamientos verticales */
 }
 
 .perfil-usuario .datos p {
@@ -368,11 +400,11 @@ body {
 
 .acciones-perfil {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .acciones-perfil button {
-  padding: 10px 20px;
+  padding: 10px 22px;
   background-color: #1b4d3e;
   color: white;
   border: none;
@@ -386,7 +418,39 @@ body {
   background-color: #163b2f;
 }
 
-/* Responsive */
+/* ====================
+   Progreso de proyectos
+==================== */
+
+progress {
+  width: 100px;
+  height: 14px;
+  border-radius: 10px;
+  background-color: #eee;
+  appearance: none;
+  -webkit-appearance: none;
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #1b4d3e;
+  border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+  background-color: #1b4d3e;
+  border-radius: 10px;
+}
+
+/* ====================
+   Responsividad
+==================== */
+
 @media (max-width: 768px) {
   .dashboard {
     flex-direction: column;
@@ -402,13 +466,264 @@ body {
 
   .acciones-empresas,
   .acciones-documentos,
-  .acciones-proyectos {
+  .acciones-proyectos,
+  .content.indicadores {
     flex-direction: column;
   }
 
   .btn-agregar,
   .btn-subir,
-  .btn-nuevo {
+  .btn-nuevo,
+  .btn-ver-detalles {
     width: 100%;
+    text-align: center;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  tbody tr td {
+    border: none;
+    padding: 6px 8px;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  tbody tr td::before {
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    text-align: left;
+    content: attr(data-label);
+  }
+
+  progress {
+    width: 100%;
+    height: 14px;
   }
 }
+
+/* ====================
+   Estilo General
+==================== */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ====================
+   Sidebar
+==================== */
+
+.sidebar {
+  background-color: #1b4d3e;
+  color: white;
+  padding: 20px;
+  width: 220px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  margin: 0 0 25px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 15px;
+  width: 0%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  color: #d1f0e3;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.03);
+}
+
+.sidebar ul li a:hover::after {
+  width: calc(100% - 30px);
+}
+
+.sidebar ul li a.active {
+  background-color: #163b2f;
+  color: #d1f0e3;
+}
+
+/* ====================
+   Contenido Principal
+==================== */
+
+.main-content {
+  flex-grow: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ====================
+   Navbar
+==================== */
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.perfil .notificacion {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.perfil .usuario {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.btn-cerrar-sesion {
+  padding: 8px 14px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cerrar-sesion:hover {
+  background-color: #c0392b;
+}
+
+/* ====================
+   Contenedores Comunes
+==================== */
+
+.content,
+.content.indicadores {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* ====================
+   Indicadores (Inicio)
+==================== */
+
+.content.indicadores .card {
+  background-color: #1b4d3e;
+  color: white;
+  border-radius: 10px;
+  flex: 1 1 200px;
+  max-width: 250px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.content.indicadores .card h3 {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.content.indicadores .card p {
+  font-size: 36px;
+  margin: 0 0 15px 0;
+  font-weight: 900;
+}
+
+.btn-ver-detalles {
+  padding: 8px 14px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  align-self: stretch;
+  text-align: center;
+}
+
+.btn-ver-detalles:hover {
+  background-color: #1e8449;
+}
+
+/* (El resto de tu CSS sigue igual) */
+
+
+

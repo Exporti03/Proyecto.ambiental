@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil Empresa</title>
+  <link rel="stylesheet" href="../css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Empresa</h2>
+      <ul>
+        <li><a href="dashboard_empresa.html" class="active">Inicio</a></li>
+        <li><a href="#">Clientes</a></li>
+        <li><a href="#">Proyectos</a></li>
+        <li><a href="#">Documentos</a></li>
+        <li><a href="#">Certificados</a></li>
+        <li><a href="perfil.empresa.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar">
+        <div class="perfil">
+          <span class="notificacion" title="Notificaciones">🔔</span>
+          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
+          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <section class="content perfil-usuario">
+        <h2>Perfil de la Empresa</h2>
+        <div class="perfil-info">
+          <div class="foto-perfil">🏢</div>
+          <div class="datos">
+            <p><strong>Nombre de la Empresa:</strong> <span id="empresa-nombre"></span></p>
+            <p><strong>NIT:</strong> <span id="empresa-nit"></span></p>
+            <p><strong>Dirección:</strong> <span id="empresa-direccion"></span></p>
+            <p><strong>Teléfono:</strong> <span id="empresa-telefono"></span></p>
+            <p><strong>Email:</strong> <span id="empresa-email"></span></p>
+            <p><strong>Representante Legal:</strong> <span id="empresa-representante"></span></p>
+            <p><strong>Sector:</strong> <span id="empresa-sector"></span></p>
+            <p><strong>Fecha de Registro:</strong> <span id="empresa-fecha"></span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/perfilempresa.js" defer></script>
+</body>
+</html>
+
