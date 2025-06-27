@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem('usuario');
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     });
   } else {
     console.warn('No se encontró el botón de cerrar sesión (logoutBtn)');
