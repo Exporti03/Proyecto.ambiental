@@ -277,3 +277,216 @@ button:hover {
 .menu li a:hover::after {
   width: 100%;
 }
+
+/* ---------- ESTILOS ADICIONALES PARA NOSOTROS ---------- */
+.nosotros-main {
+  max-width: 900px;
+  margin: 40px auto 80px;
+  background-color: #e9f0eb;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(27, 77, 62, 0.1);
+  color: #2c3e50;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.nosotros-main h1 {
+  color: #14532d;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.nosotros-container h2 {
+  margin-top: 30px;
+  color: #14532d;
+  font-weight: 600;
+  border-bottom: 2px solid #1b4d3e;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.nosotros-container ul.valores {
+  list-style: disc inside;
+  margin-left: 20px;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.nosotros-container ul.valores li {
+  margin-bottom: 8px;
+}
+
+.contacto-nosotros {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.contacto-nosotros .login-btn {
+  background-color: #1b4d3e;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.contacto-nosotros .login-btn:hover {
+  background-color: #163b2f;
+}
+
+/* ---------- ESTILOS ADICIONALES PARA CLIENTES ---------- */
+.clientes-main {
+  max-width: 1100px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+}
+
+.clientes-main h1 {
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1b4d3e;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.clientes-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logos-clientes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 25px 0 40px;
+  flex-wrap: wrap;
+}
+
+.logos-clientes img {
+  max-height: 80px;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+  cursor: default;
+}
+
+.logos-clientes img:hover {
+  filter: grayscale(0);
+}
+
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.cliente-card {
+  background-color: #f0f6f4;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(27, 77, 62, 0.15);
+  text-align: left;
+}
+
+.cliente-card h3 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1b4d3e;
+  font-size: 1.2rem;
+}
+
+.cliente-card p {
+  font-style: italic;
+  font-size: 1rem;
+  color: #444;
+}
+
+.contacto-nosotros a.login-btn {
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+
+/* ---------- ESTILOS ADICIONALES PARA SERVICIOS ---------- */
+.servicios {
+  max-width: 1100px;
+  margin: 40px auto 80px;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+}
+
+.servicios h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 35px;
+  color: #1b4d3e;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.servicio {
+  background-color: #eaf3ef;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(27, 77, 62, 0.15);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.servicio:hover {
+  transform: translateY(-8px);
+}
+
+.servicio h3 {
+  color: #1b4d3e;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.servicio p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #34495e;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .clientes-grid, .servicios-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clientes-grid, .servicios-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .logos-clientes img {
+    max-height: 60px;
+    margin: 0 auto;
+  }
+  main {
+    padding: 0 15px;
+  }
+}

@@ -16,12 +16,18 @@ app.use((req, res, next) => {
 });
 
 // Archivos estáticos
-const staticPath = path.join(__dirname, '../frontend');
-app.use(express.static(staticPath));
+const staticFrontend = path.join(__dirname, '../frontend');
+const staticPortafolio = path.join(__dirname, '../portafolioweb');
 
-// Ruta principal
+// ✅ Servir archivos estáticos de frontend e index.html como raíz
+app.use(express.static(staticFrontend));
+
+// ✅ Servir también la carpeta portafolioweb
+app.use('/portafolioweb', express.static(staticPortafolio));
+
+// Ruta principal (opcional si accedes por /index.html directamente)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
+  res.sendFile(path.join(staticFrontend, 'index.html'));
 });
 
 // Rutas de la API
@@ -38,5 +44,6 @@ app.use((req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
-  console.log(`📁 Archivos estáticos desde: ${staticPath}`);
+  console.log(`📁 frontend desde: ${staticFrontend}`);
+  console.log(`📁 portafolioweb desde: ${staticPortafolio}`);
 });
