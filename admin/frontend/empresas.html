@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panel Administrador</title>
+  <title>Empresas - Panel Admin</title>
   <link rel="stylesheet" href="/admin/frontend/css/admin.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
       <ul>
         <li><a href="/admin/frontend/admin.html">Inicio</a></li>
         <li><a href="/admin/frontend/usuarios.html">Usuarios</a></li>
-        <li><a href="/admin/frontend/empresas.html">Empresas</a></li>
+        <li><a href="/admin/frontend/empresas.html" class="active">Empresas</a></li>
         <li><a href="/admin/frontend/documentos.html">Documentos</a></li>
         <li><a href="/admin/frontend/proyectos.html">Proyectos</a></li>
       </ul>
@@ -28,13 +28,25 @@
       </header>
 
       <section class="content">
-        <h1>Bienvenido al panel de administrador</h1>
-        <p>Desde aquí puedes gestionar el sistema.</p>
+        <h1>Gestión de Empresas</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre Empresa</th>
+              <th>NIT</th>
+              <th>Correo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JS llenará los datos -->
+          </tbody>
+        </table>
       </section>
     </main>
   </div>
   <script src="../js/dashboard.js" defer></script>
-
   <script src="admin.js"></script>
 </body>
 </html>
