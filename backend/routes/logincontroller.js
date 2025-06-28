@@ -31,30 +31,62 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
-    // Obtener nombre según tipo
-    let nombre = 'Usuario';
-
+    // Obtener los datos adicionales según el tipo
     if (tipo === 'personal') {
       const [resPersonal] = await db.query('SELECT nombre FROM datos_personales WHERE usuario_id = ?', [usuario.id]);
+
       if (resPersonal.length > 0) {
-        nombre = resPersonal[0].nombre;
+        return res.status(200).json({
+          mensaje: 'Inicio de sesión exitoso',
+          usuario: {
+            id: usuario.id,
+            correo: usuario.correo,
+            tipo: usuario.tipo,
+            nombreCompleto: resPersonal[0].nombre,
+            fechaRegistro: usuario.fecha_registro
+          }
+        });
       }
+
     } else if (tipo === 'empresa') {
-      const [resEmpresa] = await db.query('SELECT nombre_empresa AS nombre FROM datos_empresas WHERE usuario_id = ?', [usuario.id]);
+      const [resEmpresa] = await db.query(`
+        SELECT 
+          nombre_empresa AS razonSocial,
+          nit,
+          direccion,
+          telefono,
+          responsable AS representanteLegal
+        FROM datos_empresas
+        WHERE usuario_id = ?
+      `, [usuario.id]);
+
       if (resEmpresa.length > 0) {
-        nombre = resEmpresa[0].nombre;
+        const empresa = resEmpresa[0];
+
+        return res.status(200).json({
+          mensaje: 'Inicio de sesión exitoso',
+          usuario: {
+            id: usuario.id,
+            correo: usuario.correo,
+            tipo: usuario.tipo,
+            ...empresa,
+            fechaRegistro: usuario.fecha_registro
+          }
+        });
       }
     }
 
-    // Enviar datos seguros, incluyendo nombre
-    const usuarioSeguro = {
-      id: usuario.id,
-      correo: usuario.correo,
-      tipo: usuario.tipo,
-      nombre: nombre
-    };
-
-    res.status(200).json({ mensaje: 'Inicio de sesión exitoso', usuario: usuarioSeguro });
+    // Si no se encontraron datos adicionales
+    return res.status(200).json({
+      mensaje: 'Inicio de sesión exitoso',
+      usuario: {
+        id: usuario.id,
+        correo: usuario.correo,
+        tipo: usuario.tipo,
+        nombre: 'No registrado',
+        fechaRegistro: usuario.fecha_registro
+      }
+    });
 
   } catch (error) {
     console.error('Error en /login:', error);
