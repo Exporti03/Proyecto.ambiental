@@ -1,9 +1,9 @@
+// registrocontroller.js
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 
-// Conexión a la base de datos
 const db = mysql.createPool({
   host: 'localhost',
   user: 'root',

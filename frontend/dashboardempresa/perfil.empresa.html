@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perfil Empresa</title>
   <link rel="stylesheet" href="../css/styleback.css" />
+  <link rel="stylesheet" href="../css/perfil_empresa.css" />
 </head>
 <body>
   <div class="dashboard">
@@ -16,21 +17,21 @@
         <li><a href="/dashboardempresa/dashboard_empresa_proyectos.html">Proyectos</a></li>
         <li><a href="/dashboardempresa/panel_documentos.html">Documentos</a></li>
         <li><a href="/dashboardempresa/panel_certificados.html">Certificados</a></li>
-        <li><a href="/dashboardempresa/perfil.empresa.html"class="active">Perfil</a></li>
+        <li><a href="/dashboardempresa/perfil.empresa.html" class="active">Perfil</a></li>
       </ul>
     </aside>
 
     <main class="main-content">
       <header class="navbar">
         <div class="perfil">
-          <span class="notificacion" title="Notificaciones">🔔</span>
-          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
+          <span class="notificacion">🔔</span>
+          <span class="usuario" id="user-button">👤 Usuario</span>
           <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
         </div>
       </header>
 
       <section class="content perfil-usuario">
-        <h2>Perfil de la Empresa</h2>
+        <h2 class="titulo-perfil">Perfil de la Empresa</h2>
         <div class="perfil-info">
           <div class="foto-perfil">🏢</div>
           <div class="datos">
@@ -44,10 +45,14 @@
             <p><strong>Fecha de Registro:</strong> <span id="empresa-fecha"></span></p>
           </div>
         </div>
+
+        <div class="acciones-perfil">
+          <button id="btn-editar" class="btn-accion">✏️ Editar Información</button>
+          <button id="btn-cambiar-contrasena" class="btn-accion">🔒 Cambiar Contraseña</button>
+        </div>
       </section>
     </main>
   </div>
   <script src="../js/perfilempresa.js" defer></script>
 </body>
 </html>
-

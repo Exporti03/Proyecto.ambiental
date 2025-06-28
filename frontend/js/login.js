@@ -23,19 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json();
 
       if (response.ok) {
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
         alert(data.mensaje);
-        localStorage.setItem('usuario', JSON.stringify(data.usuario)); // Guarda datos del usuario
 
-        // ✅ Redirige según tipo con rutas correctas
         if (data.usuario.tipo === 'personal') {
           window.location.href = './dashboardcliente/dashboard.html';
         } else if (data.usuario.tipo === 'empresa') {
           window.location.href = './dashboardempresa/deshboard_empresa.html';
         }
-
       } else {
         alert(data.error || 'Correo o contraseña incorrectos');
       }
+
     } catch (error) {
       alert('Error de conexión con el servidor');
       console.error('Login error:', error);

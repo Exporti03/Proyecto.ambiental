@@ -1,8 +1,9 @@
+// clientescontroller.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Obtener clientes asociados
+// Obtener clientes asociados a una empresa
 router.get('/empresa/clientes/:empresaId', async (req, res) => {
   const { empresaId } = req.params;
 
@@ -27,7 +28,6 @@ router.post('/empresa/asociar-cliente', async (req, res) => {
   const { empresaId, clienteCorreo } = req.body;
 
   try {
-    // Buscar el cliente por correo
     const [clientes] = await db.query(
       'SELECT id FROM usuarios WHERE correo = ? AND tipo = "personal"',
       [clienteCorreo]
@@ -49,7 +49,6 @@ router.post('/empresa/asociar-cliente', async (req, res) => {
       return res.status(400).json({ error: 'Cliente ya asociado' });
     }
 
-    // Insertar la relación
     await db.query(
       'INSERT INTO empresa_clientes (empresa_id, cliente_id) VALUES (?, ?)',
       [empresaId, clienteId]

@@ -25,10 +25,10 @@ CREATE TABLE datos_empresas (
   responsable VARCHAR(100),
   telefono VARCHAR(20),
   direccion VARCHAR(50),
+  sector VARCHAR(100),
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Tabla de proyectos
 CREATE TABLE proyectos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   empresa_id INT,
@@ -40,7 +40,6 @@ CREATE TABLE proyectos (
   FOREIGN KEY (empresa_id) REFERENCES usuarios(id)
 );
 
--- Relación persona-empresa (clientes vinculados)
 CREATE TABLE empresa_clientes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   empresa_id INT,
@@ -49,7 +48,6 @@ CREATE TABLE empresa_clientes (
   FOREIGN KEY (cliente_id) REFERENCES usuarios(id)
 );
 
--- Documentos subidos por clientes a sus proyectos
 CREATE TABLE documentos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   proyecto_id INT,

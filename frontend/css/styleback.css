@@ -401,29 +401,62 @@ tbody tr:last-child td {
   user-select: none;
 }
 
+/* -- Ajustes para centrar el círculo verde y el ícono -- */
+.foto-perfil {
+  background-color: #3bd16f;
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .perfil-usuario .datos p {
   margin: 6px 0;
   font-size: 16px;
 }
 
-.acciones-perfil {
-  display: flex;
-  gap: 12px;
+/* Reduce espacio entre título y datos */
+.titulo-perfil {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.acciones-perfil button {
-  padding: 10px 22px;
-  background-color: #1b4d3e;
+.perfil-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.datos {
+  max-width: 400px;
+}
+
+.acciones-perfil {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-accion {
+  background-color: #4caf50;
   color: white;
+  padding: 10px 18px;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.acciones-perfil button:hover {
-  background-color: #163b2f;
+.btn-accion:hover {
+  background-color: #45a049;
 }
 
 /* ====================
@@ -662,9 +695,111 @@ progress::-moz-progress-bar {
 
 /* Al pasar el mouse cambia el color (sin fondo, sombra ni borde) */
 .btn-ver:hover {
-  color: #27ae60; /* color verde suave */
+  color: #1b4d3e; /* color verde suave */
   background: none;
   box-shadow: none;
   border: none;
   outline: none;
 }
+
+.acciones-perfil {
+  margin-top: 20px;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-accion {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accion:hover {
+  background-color: #125aa0;
+}
+
+.perfil-usuario {
+  padding: 20px;
+}
+
+.titulo-perfil {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.perfil-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.foto-perfil {
+  background-color: #1b4d3e;
+  color: white;
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.datos {
+  max-width: 400px;
+}
+
+.acciones-perfil {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-accion {
+  background-color: #1b4d3e;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accion:hover {
+  background-color: #1b4d3e;
+}
+
+/* Navbar: menos espacio abajo */
+.navbar {
+  padding-bottom: 4px;    /* de 10px a 6px */
+  margin-bottom: 7px;     /* de 15px a 8px */
+}
+
+/* Título perfil - menos margen inferior */
+.perfil-usuario h2 {
+  margin-bottom: 1px;    /* de 30px a 12px */
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Contenedor info perfil - menos margen inferior */
+.perfil-usuario .perfil-info {
+  margin-bottom: 6px;    /* de 25px a 12px */
+  gap: 20px;              /* un poco menos que antes */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
