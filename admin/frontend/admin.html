@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panel Administrador</title>
   <link rel="stylesheet" href="/admin/frontend/css/admin.css" />
+  <link rel="stylesheet" href="/admin/frontend/css/cards.css" />
 </head>
 <body>
   <div class="dashboard">
     <aside class="sidebar">
       <h2>Administrador</h2>
       <ul>
-        <li><a href="/admin/frontend/admin.html">Inicio</a></li>
+        <li><a href="/admin/frontend/admin.html" class="active">Inicio</a></li>
         <li><a href="/admin/frontend/usuarios.html">Usuarios</a></li>
         <li><a href="/admin/frontend/empresas.html">Empresas</a></li>
         <li><a href="/admin/frontend/documentos.html">Documentos</a></li>
@@ -30,11 +31,29 @@
       <section class="content">
         <h1>Bienvenido al panel de administrador</h1>
         <p>Desde aquí puedes gestionar el sistema.</p>
+
+        <div class="cards-container">
+          <div class="card">
+            <div class="number">150</div>
+            <div class="label">Total Usuarios</div>
+          </div>
+          <div class="card">
+            <div class="number">45</div>
+            <div class="label">Total Empresas</div>
+          </div>
+          <div class="card">
+            <div class="number">320</div>
+            <div class="label">Total Documentos</div>
+          </div>
+          <div class="card">
+            <div class="number">75</div>
+            <div class="label">Total Proyectos</div>
+          </div>
+        </div>
       </section>
     </main>
   </div>
   <script src="../js/dashboard.js" defer></script>
-
   <script src="admin.js"></script>
 </body>
 </html>
