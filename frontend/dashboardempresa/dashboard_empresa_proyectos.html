@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel Empresa - Proyectos</title>
+  <link rel="stylesheet" href="../css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Empresa</h2>
+      <ul>
+        <li><a href="dashboard_empresa.html">Inicio</a></li>
+        <li><a href="panel_clientes.html">Clientes</a></li>
+        <li><a href="dashboard_empresa_proyectos.html" class="active">Proyectos</a></li>
+        <li><a href="documentos_empresa.html">Documentos</a></li>
+        <li><a href="certificados_empresa.html">Certificados</a></li>
+        <li><a href="perfil_empresa.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar">
+        <div class="perfil">
+          <span class="notificacion" title="Notificaciones">🔔</span>
+          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
+          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <section class="proyectos" style="margin-top: 20px;">
+        <h2>Proyectos de la Empresa</h2>
+
+        <div class="acciones-proyectos">
+          <input type="search" id="buscarProyecto" placeholder="Buscar proyecto..." />
+          <select id="filtroEstado">
+            <option value="">Filtrar por estado</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en-proceso">En proceso</option>
+            <option value="finalizado">Finalizado</option>
+          </select>
+          <button id="btnNuevoProyecto" class="btn-nuevo">+ Nuevo Proyecto</button>
+        </div>
+
+        <table class="tabla-proyectos" id="proyectos-table" aria-label="Lista de proyectos">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Estado</th>
+              <th>Fecha Inicio</th>
+              <th>Fecha Entrega</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Se llenará dinámicamente -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="../js/dashboard.js" defer></script>
+
+  <script src="../js/dashboard_empresa_proyectos.js" defer></script>
+</body>
+</html>

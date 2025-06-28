@@ -19,22 +19,22 @@ app.use((req, res, next) => {
 const staticFrontend = path.join(__dirname, '../frontend');
 const staticPortafolio = path.join(__dirname, '../portafolioweb');
 
-// ✅ Servir archivos estáticos de frontend e index.html como raíz
 app.use(express.static(staticFrontend));
-
-// ✅ Servir también la carpeta portafolioweb
 app.use('/portafolioweb', express.static(staticPortafolio));
 
-// Ruta principal (opcional si accedes por /index.html directamente)
+// Ruta raíz
 app.get('/', (req, res) => {
   res.sendFile(path.join(staticFrontend, 'index.html'));
 });
 
-// Rutas de la API
+// Rutas API
 const registroRouter = require('./routes/registrocontroller');
 const loginRouter = require('./routes/logincontroller');
+const clientesRouter = require('./routes/clientescontroller');
+
 app.use('/api', registroRouter);
 app.use('/api', loginRouter);
+app.use('/api', clientesRouter);
 
 // Ruta no encontrada
 app.use((req, res) => {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clientes Asociados</title>
+  <link rel="stylesheet" href="../css/styleback.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Empresa</h2>
+      <ul>
+        <li><a href="dashboard_empresa.html">Inicio</a></li>
+        <li><a href="panel_clientes.html"class="active>">Clientes</a></li>
+        <li><a href="dashboard_empresa_proyectos.html">Proyectos</a></li>
+        <li><a href="#">Documentos</a></li>
+        <li><a href="#">Certificados</a></li>
+        <li><a href="perfil.empresa.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar">
+        <div class="perfil">
+          <span class="notificacion" title="Notificaciones">🔔</span>
+          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
+          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <section class="content clientes-asociados">
+        <h1>Clientes Asociados</h1>
+        <table id="clientes-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JS llenará aquí -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/dashboard.js" defer></script>
+
+  <script src="../js/clientes_asociados.js" defer></script>
+</body>
+</html>
+

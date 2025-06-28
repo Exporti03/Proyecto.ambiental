@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documentos - Panel Empresa</title>
+  <link rel="stylesheet" href="../css/styleback.css" />
+  <link rel="stylesheet" href="../css/panel_documentos.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Portal Empresa</h2>
+      <ul>
+        <li><a href="dashboard_empresa.html">Inicio</a></li>
+        <li><a href="panel_clientes.html">Clientes</a></li>
+        <li><a href="panel_proyectos.html">Proyectos</a></li>
+        <li><a href="panel_documentos.html" class="active">Documentos</a></li>
+        <li><a href="#">Certificados</a></li>
+        <li><a href="perfil.empresa.html">Perfil</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <header class="navbar">
+        <div class="perfil">
+          <span class="notificacion" title="Notificaciones">🔔</span>
+          <span class="usuario" id="user-button" title="Usuario">👤 Usuario</span>
+          <button id="logoutBtn" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <section class="content documentos-panel">
+        <h1>Documentos Subidos</h1>
+
+        <div class="acciones-documentos">
+          <input type="search" id="buscarDocumento" placeholder="Buscar documento..." />
+          <select id="filtroTipo">
+            <option value="">Filtrar por tipo</option>
+            <option value="contrato">Contrato</option>
+            <option value="informe">Informe</option>
+            <option value="certificado">Certificado</option>
+          </select>
+          <button id="btn-subir-documento" class="btn-subir">+ Subir Documento</button>
+        </div>
+
+        <table id="documentos-table" aria-label="Lista de documentos">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Fecha de Subida</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JS llenará aquí -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="../js/dashboard.js" defer></script>
+
+  <script src="../js/panel_documentos.js" defer></script>
+</body>
+</html>

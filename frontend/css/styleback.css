@@ -723,7 +723,274 @@ body {
   background-color: #1e8449;
 }
 
-/* (El resto de tu CSS sigue igual) */
+.clientes-asociados h1 {
+  margin-bottom: 8px; /* reduce el espacio debajo del título */
+}
 
+#clientes-table {
+  margin-top: 0; /* elimina margen superior extra */
+}
+
+.clientes-asociados {
+  padding-top: 10px; /* o menos, según prefieras */
+}
+
+/* Para la sección clientes asociados: eliminar flex y gap */
+.clientes-asociados {
+  display: block !important; /* Para anular el flex si heredado */
+  padding-top: 10px; /* Puedes ajustar */
+  margin-top: 0;
+}
+
+/* Ajustar título */
+.clientes-asociados h1 {
+  margin-top: 0;
+  margin-bottom: 6px; /* Espacio pequeño entre título y tabla */
+  padding: 0;
+}
+
+/* Ajustar tabla para que no tenga margen superior */
+#clientes-table {
+  margin-top: 0;
+}
+
+.acciones-proyectos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.acciones-proyectos input[type="search"],
+.acciones-proyectos select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 180px;
+  transition: border-color 0.3s ease;
+}
+
+.acciones-proyectos input[type="search"]:focus,
+.acciones-proyectos select:focus {
+  border-color: #1b4d3e;
+  outline: none;
+}
+
+.btn-nuevo {
+  background-color: #1b4d3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-nuevo:hover {
+  background-color: #163b2f;
+}
+
+.documentos-panel {
+  padding-top: 10px;
+}
+
+.acciones-documentos {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.acciones-documentos input[type="search"],
+.acciones-documentos select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 180px;
+  transition: border-color 0.3s ease;
+}
+
+.acciones-documentos input[type="search"]:focus,
+.acciones-documentos select:focus {
+  border-color: #1b4d3e;
+  outline: none;
+}
+
+.btn-subir {
+  background-color: #1b4d3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-subir:hover {
+  background-color: #163b2f;
+}
+
+/* Tabla documentos */
+
+#documentos-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#documentos-table thead tr {
+  background-color: #1b4d3e;
+  color: white;
+  font-weight: 600;
+}
+
+#documentos-table th,
+#documentos-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#documentos-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estado etiquetas */
+
+.estado {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.estado.activo {
+  background-color: #27ae60;
+}
+
+.estado.inactivo,
+.estado.rechazado {
+  background-color: #e74c3c;
+}
+
+.estado.pendiente {
+  background-color: #f39c12;
+}
+
+.certificados-panel {
+  padding-top: 10px;
+}
+
+.acciones-certificados {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.acciones-certificados input[type="search"],
+.acciones-certificados select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 180px;
+  transition: border-color 0.3s ease;
+}
+
+.acciones-certificados input[type="search"]:focus,
+.acciones-certificados select:focus {
+  border-color: #1b4d3e;
+  outline: none;
+}
+
+.btn-nuevo {
+  background-color: #1b4d3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-nuevo:hover {
+  background-color: #163b2f;
+}
+
+/* Tabla certificados */
+
+#certificados-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.05);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#certificados-table thead tr {
+  background-color: #1b4d3e;
+  color: white;
+  font-weight: 600;
+}
+
+#certificados-table th,
+#certificados-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#certificados-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estado etiquetas */
+
+.estado {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.estado.emitido {
+  background-color: #27ae60;
+}
+
+.estado.pendiente {
+  background-color: #f39c12;
+}
+
+.estado.rechazado {
+  background-color: #e74c3c;
+}
 
 
