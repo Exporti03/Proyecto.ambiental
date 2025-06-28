@@ -1,35 +1,39 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (!usuario || !usuario.id) {
-    console.error('No se encontró usuario en localStorage');
-    return;
-  }
-  const empresaId = usuario.id;
+document.addEventListener('DOMContentLoaded', () => {
+  // Datos fijos para demo visual
+  const clientes = [
+    { id: 1, nombre: 'Juan Pérez', correo: 'juan@example.com' },
+    { id: 2, nombre: 'Ana Gómez', correo: 'ana@example.com' },
+    { id: 3, nombre: 'Luis Martínez', correo: 'luis@example.com' }
+  ];
 
-  try {
-    const res = await fetch(`/api/empresa/clientes/${empresaId}`);
-    if (!res.ok) throw new Error('Error en la respuesta del servidor');
-    const clientes = await res.json();
+  const container = document.getElementById('clientes-container');
+  container.innerHTML = '';
 
-    const tbody = document.querySelector('#clientes-table tbody');
-    tbody.innerHTML = '';
+  clientes.forEach(cliente => {
+    const card = document.createElement('div');
+    card.className = 'cliente-card';
 
-    clientes.forEach(cliente => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${cliente.nombre || 'Sin nombre'}</td>
-        <td>${cliente.correo}</td>
-        <td>
-          <button onclick="verProyectos(${cliente.id})">Ver Proyectos</button>
-        </td>
-      `;
-      tbody.appendChild(tr);
-    });
-  } catch (error) {
-    console.error('Error cargando clientes:', error);
-  }
+    card.innerHTML = `
+      <div class="card-header">
+        <h3>${cliente.nombre}</h3>
+        <span class="estado-pendiente">Pendiente</span>
+      </div>
+      <p><strong>Correo:</strong> ${cliente.correo}</p>
+      <div class="acciones">
+        <button onclick="aceptarSolicitud(${cliente.id})" class="btn-aceptar">Aceptar</button>
+        <button onclick="rechazarSolicitud(${cliente.id})" class="btn-rechazar">Rechazar</button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
 });
 
-function verProyectos(clienteId) {
-  window.location.href = `proyectos_cliente.html?id=${clienteId}`;
+function aceptarSolicitud(id) {
+  alert(`Solicitud aceptada para cliente con ID: ${id}`);
 }
+
+function rechazarSolicitud(id) {
+  alert(`Solicitud rechazada para cliente con ID: ${id}`);
+}
+

@@ -11,12 +11,12 @@
     <aside class="sidebar">
       <h2>Portal Empresa</h2>
       <ul>
-        <li><a href="dashboard_empresa.html">Inicio</a></li>
-        <li><a href="panel_clientes.html"class="active>">Clientes</a></li>
-        <li><a href="dashboard_empresa_proyectos.html">Proyectos</a></li>
-        <li><a href="panel_documentos.html">Documentos</a></li>
-        <li><a href="panel_certificados.html">Certificados</a></li>
-        <li><a href="perfil.empresa.html">Perfil</a></li>
+        <li><a href="/dashboardempresa/deshboard_empresa.html">Inicio</a></li>
+        <li><a href="/dashboardempresa/panel_clientes.html" class="active">Clientes</a></li>
+        <li><a href="/dashboardempresa/dashboard_empresa_proyectos.html">Proyectos</a></li>
+        <li><a href="/dashboardempresa/panel_documentos.html">Documentos</a></li>
+        <li><a href="/dashboardempresa/panel_certificados.html">Certificados</a></li>
+        <li><a href="/dashboardempresa/perfil.empresa.html">Perfil</a></li>
       </ul>
     </aside>
 
@@ -29,27 +29,16 @@
         </div>
       </header>
 
-      <section class="content clientes-asociados">
-        <h1>Clientes Asociados</h1>
-        <table id="clientes-table">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- JS llenará aquí -->
-          </tbody>
-        </table>
+      <section class="clientes-tarjetas">
+        <h1>Solicitudes de Asociación</h1>
+        <div id="clientes-container" class="tarjetas-container">
+          <!-- Tarjetas generadas con JS -->
+        </div>
       </section>
     </main>
   </div>
 
   <script src="../js/dashboard.js" defer></script>
-
   <script src="../js/clientes_asociados.js" defer></script>
 </body>
 </html>
-

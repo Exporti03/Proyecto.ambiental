@@ -1,100 +1,76 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (!usuario || !usuario.id) {
-    console.error('Usuario no encontrado en localStorage');
-    return;
-  }
-  const empresaId = usuario.id;
-
-  const tablaBody = document.querySelector('#documentos-table tbody');
+document.addEventListener('DOMContentLoaded', () => {
+  const tbody = document.querySelector('#documentos-table tbody');
   const buscarInput = document.getElementById('buscarDocumento');
-  const filtroSelect = document.getElementById('filtroTipo');
-  const btnSubir = document.getElementById('btn-subir-documento');
+  const filtroTipo = document.getElementById('filtroTipo');
 
-  let documentos = [];
-
-  async function cargarDocumentos() {
-    try {
-      const res = await fetch(`/api/empresa/documentos/${empresaId}`);
-      if (!res.ok) throw new Error('Error en la respuesta del servidor');
-      documentos = await res.json();
-      mostrarDocumentos(documentos);
-    } catch (error) {
-      console.error('Error cargando documentos:', error);
+  // Datos ficticios para mostrar
+  let documentos = [
+    {
+      nombre: 'Contrato Acuerdo Comercial.pdf',
+      tipo: 'contrato',
+      fecha_subida: '2025-06-27',
+      estado: 'Activo',
+      url: '#'
+    },
+    {
+      nombre: 'Informe Anual de Progreso.docx',
+      tipo: 'informe',
+      fecha_subida: '2025-05-15',
+      estado: 'Pendiente',
+      url: '#'
+    },
+    {
+      nombre: 'Certificado Ambiental.pdf',
+      tipo: 'certificado',
+      fecha_subida: '2025-04-10',
+      estado: 'Aprobado',
+      url: '#'
     }
-  }
+  ];
 
   function mostrarDocumentos(lista) {
-    tablaBody.innerHTML = '';
+    tbody.innerHTML = '';
+
     if (lista.length === 0) {
-      tablaBody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No se encontraron documentos</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="5">No hay documentos disponibles.</td></tr>`;
       return;
     }
+
     lista.forEach(doc => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${doc.nombre}</td>
-        <td>${doc.tipo}</td>
-        <td>${new Date(doc.fecha_subida).toLocaleDateString()}</td>
-        <td><span class="estado ${doc.estado.replace('_', '-')}">${doc.estado.replace('_', ' ')}</span></td>
-        <td>
-          <button class="btn-ver" onclick="verDocumento(${doc.id})" title="Ver Documento">👁️</button>
-          <button class="btn-eliminar" onclick="eliminarDocumento(${doc.id})" title="Eliminar">🗑️</button>
-        </td>
+        <td>${doc.nombre || '-'}</td>
+        <td>${doc.tipo || '-'}</td>
+        <td>${doc.fecha_subida || '-'}</td>
+        <td><span class="estado ${doc.estado.toLowerCase()}">${doc.estado}</span></td>
+        <td><a href="${doc.url}" target="_blank" class="btn-ver">👁️ Ver</a></td>
       `;
-      tablaBody.appendChild(tr);
+      tbody.appendChild(tr);
     });
   }
 
-  buscarInput.addEventListener('input', () => {
-    filtrarYMostrar();
-  });
-
-  filtroSelect.addEventListener('change', () => {
-    filtrarYMostrar();
-  });
-
-  function filtrarYMostrar() {
-    const textoBusqueda = buscarInput.value.toLowerCase();
-    const tipoFiltro = filtroSelect.value;
+  function aplicarFiltros() {
+    const texto = buscarInput.value.toLowerCase();
+    const tipo = filtroTipo.value;
 
     const filtrados = documentos.filter(doc => {
-      const matchesTexto = doc.nombre.toLowerCase().includes(textoBusqueda);
-      const matchesTipo = tipoFiltro ? doc.tipo === tipoFiltro : true;
-      return matchesTexto && matchesTipo;
+      const coincideTexto = doc.nombre.toLowerCase().includes(texto);
+      const coincideTipo = tipo ? doc.tipo === tipo : true;
+      return coincideTexto && coincideTipo;
     });
 
     mostrarDocumentos(filtrados);
   }
 
-  btnSubir.addEventListener('click', () => {
-    // Aquí podrías redirigir a un formulario para subir documentos o abrir un modal
-    alert('Funcionalidad para subir documento aún no implementada.');
-  });
+  buscarInput.addEventListener('input', aplicarFiltros);
+  filtroTipo.addEventListener('change', aplicarFiltros);
 
-  window.verDocumento = function(id) {
-    // Aquí rediriges a página de detalle o abrir modal
-    window.open(`/empresa/documento_detalle.html?id=${id}`, '_blank');
-  };
-
-  window.eliminarDocumento = async function(id) {
-    if (!confirm('¿Estás seguro de eliminar este documento?')) return;
-
-    try {
-      const res = await fetch(`/api/documentos/${id}`, { method: 'DELETE' });
-      const data = await res.json();
-
-      if (data.success) {
-        alert('Documento eliminado.');
-        await cargarDocumentos();
-      } else {
-        alert('Error al eliminar documento.');
-      }
-    } catch (error) {
-      alert('Error de red al eliminar documento.');
-    }
-  };
-
-  // Carga inicial
-  cargarDocumentos();
+  // Mostrar datos ficticios al cargar
+  mostrarDocumentos(documentos);
 });
+
+const botonVer = document.createElement('button');
+botonVer.className = 'btn-ver';
+botonVer.title = 'Ver documento';
+botonVer.innerHTML = '📄<span>Ver</span>';
+// Agrega evento o funcionalidad a botonVer si es necesario
