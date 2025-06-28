@@ -3,50 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Usuarios - Panel Admin</title>
+  <title>Gestión de Usuarios - Admin</title>
   <link rel="stylesheet" href="/admin/frontend/css/admin.css" />
 </head>
 <body>
-  <div class="dashboard">
+  <div class="admin-panel">
     <aside class="sidebar">
-      <h2>Administrador</h2>
+      <h2>Admin Panel</h2>
       <ul>
         <li><a href="/admin/frontend/admin.html">Inicio</a></li>
-        <li><a href="/admin/frontend/usuarios.html" class="active">Usuarios</a></li>
-        <li><a href="/admin/frontend/empresas.html">Empresas</a></li>
-        <li><a href="/admin/frontend/documentos.html">Documentos</a></li>
-        <li><a href="/admin/frontend/proyectos.html">Proyectos</a></li>
+        <li><a href="usuarios.html" class="active">Usuarios</a></li>
+        <li><a href="empresas.html">Empresas</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="documentos.html">Documentos</a></li>
       </ul>
     </aside>
 
     <main class="main-content">
-      <header class="navbar">
-        <div class="perfil">
-          <span class="usuario">👤 Admin</span>
-          <button id="logoutBtn">Cerrar sesión</button>
-        </div>
-      </header>
-
-      <section class="content">
-        <h1>Gestión de Usuarios</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Correo</th>
-              <th>Tipo</th>
-              <th>Fecha Registro</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- JS llenará los datos -->
-          </tbody>
-        </table>
-      </section>
+      <h1>Gestión de Usuarios</h1>
+      <table class="tabla-admin">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Correo</th>
+            <th>Tipo</th>
+            <th>Fecha Registro</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="usuarios-body">
+          <!-- Se llenará con JS -->
+        </tbody>
+      </table>
     </main>
   </div>
-  <script src="../js/dashboard.js" defer></script>
-  <script src="admin.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const usuarios = [
+        { id: 1, correo: 'juan@mail.com', tipo: 'personal', fecha: '2025-06-25' },
+        { id: 2, correo: 'empresa1@mail.com', tipo: 'empresa', fecha: '2025-06-20' },
+        { id: 3, correo: 'ana@mail.com', tipo: 'personal', fecha: '2025-06-15' }
+      ];
+
+      const cuerpo = document.getElementById('usuarios-body');
+
+      usuarios.forEach(usuario => {
+        const fila = document.createElement('tr');
+
+        fila.innerHTML = `
+          <td>${usuario.id}</td>
+          <td>${usuario.correo}</td>
+          <td>${usuario.tipo}</td>
+          <td>${usuario.fecha}</td>
+          <td>
+            <button class="btn-ver" title="Ver detalles">👁️</button>
+            <button class="btn-eliminar" title="Eliminar usuario">🗑️</button>
+          </td>
+        `;
+
+        cuerpo.appendChild(fila);
+      });
+    });
+  </script>
 </body>
 </html>

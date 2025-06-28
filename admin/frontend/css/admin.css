@@ -1,5 +1,6 @@
-/* styleadmin.css mejorado */
+/* styleadmin.css completo mejorado con encabezado visible y filas uniformes */
 
+/* Reset y base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,125 +8,213 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+html, body {
+  height: 100%;
   background-color: #f4f6f8;
   color: #333;
 }
 
-.dashboard {
+/* Contenedor principal: sidebar + contenido */
+.admin-panel, .dashboard {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+/* Sidebar fijo */
 .sidebar {
-  background-color: #111827;
-  color: #fff;
   width: 220px;
+  background-color: #2c3e50; /* color uniforme */
+  color: #fff;
   padding: 20px 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
+/* Título sidebar */
 .sidebar h2 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.4em;
-  color: #10b981;
+  margin-bottom: 30px;
+  font-size: 22px;
+  color: #10b981; /* verde destacado */
+  font-weight: 700;
 }
 
+/* Menú del sidebar */
 .sidebar ul {
   list-style: none;
-  padding: 0;
+  padding: 0 10px;
 }
 
 .sidebar ul li {
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .sidebar ul li a {
-  color: #cbd5e1;
+  color: #ecf0f1;
   text-decoration: none;
-  padding: 12px 20px;
   display: block;
-  transition: background 0.3s, color 0.3s;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a.active {
-  background-color: #1f2937;
+  background-color: #34495e;
   color: #10b981;
 }
 
+/* Contenido principal a la derecha del sidebar */
 .main-content {
+  margin-left: 220px; /* igual al ancho del sidebar */
+  padding: 30px 40px;
   flex-grow: 1;
-  padding: 20px;
+  box-sizing: border-box;
   overflow-y: auto;
+  background-color: #fff;
+  min-height: 100vh;
 }
 
+/* Navbar superior */
 .navbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  gap: 20px;
 }
 
 .navbar .perfil {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #333;
+  font-weight: 600;
 }
 
 .navbar button {
   background-color: #ef4444;
   border: none;
   color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-weight: 600;
+  transition: background-color 0.3s;
 }
 
 .navbar button:hover {
   background-color: #dc2626;
 }
 
+/* Títulos y textos generales */
 .content h1 {
-  margin-bottom: 20px;
-  font-size: 1.6em;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
   color: #111827;
+  font-weight: 700;
 }
 
+/* Tablas: diseño limpio y moderno */
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  background-color: #fff;
 }
 
-table thead {
-  background-color: #10b981;
-  color: white;
+thead {
+  background-color: #34495e; /* gris oscuro para buen contraste */
+  color: #ecf0f1; /* texto claro */
 }
 
-table th,
-table td {
-  padding: 12px 15px;
+thead th {
+  padding: 14px 20px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
 }
 
-table tbody tr:hover {
-  background-color: #f9fafb;
+/* Filas con color uniforme y borde tenue */
+tbody tr {
+  background-color: #f7f9fb; /* color claro y suave para todas las filas */
+  border-bottom: 1px solid #f7f9fb; /* borde del mismo color para disimular */
+  transition: none;
+}
+
+tbody tr:hover {
+  background-color: #f7f9fb; /* sin cambio al pasar mouse */
+}
+
+tbody td {
+  padding: 14px 20px;
+  color: #333;
+}
+
+/* Botones dentro de tabla */
+.btn-ver, .btn-eliminar {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 8px;
+  transition: transform 0.2s, color 0.3s;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-ver {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
+  color: #3b82f6;
 }
 
 .btn-ver:hover {
-  background-color: #2563eb;
+  color: #2563eb;
+  transform: scale(1.2);
 }
+
+.btn-eliminar {
+  color: #cc0000;
+}
+
+.btn-eliminar:hover {
+  color: #990000;
+  transform: scale(1.2);
+}
+
+/* Scrollbar sidebar (opcional para UX) */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+/* Responsive básico */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+
