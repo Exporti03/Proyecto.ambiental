@@ -776,18 +776,18 @@ progress::-moz-progress-bar {
 }
 
 .btn-accion:hover {
-  background-color: #1b4d3e;
+  background-color: #7d7d7d;
 }
 
 /* Navbar: menos espacio abajo */
 .navbar {
   padding-bottom: 4px;    /* de 10px a 6px */
-  margin-bottom: 7px;     /* de 15px a 8px */
+  margin-bottom: 15px;     /* de 15px a 8px */
 }
 
 /* Título perfil - menos margen inferior */
 .perfil-usuario h2 {
-  margin-bottom: 1px;    /* de 30px a 12px */
+  margin-bottom: px;    /* de 30px a 12px */
   font-weight: 700;
   font-size: 24px;
   text-align: center;
@@ -795,11 +795,330 @@ progress::-moz-progress-bar {
 
 /* Contenedor info perfil - menos margen inferior */
 .perfil-usuario .perfil-info {
-  margin-bottom: 6px;    /* de 25px a 12px */
+  margin-bottom: 10px;    /* de 25px a 12px */
   gap: 20px;              /* un poco menos que antes */
   align-items: center;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
 }
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 300px;
+  max-width: 90%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Botones */
+button {
+  cursor: pointer;
+}
+
+.btn-cerrar,
+.btn-guardar {
+  background-color: #1b4d3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.btn-cerrar:hover,
+.btn-guardar:hover {
+  background-color: #163b2f;
+}
+
+/* Inputs */
+.modal-content label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px 24px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px; /* aún más pequeña */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.modal-content h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #1b4d3e;
+}
+
+.modal-content label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #1b4d3e;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #145a42;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón Guardar */
+.modal-buttons button[type="submit"] {
+  background-color: #1b4d3e;
+  color: white;
+}
+
+.modal-buttons button[type="submit"]:hover {
+  background-color: #145a42;
+}
+
+/* Botón Cancelar */
+.modal-buttons button#btnCancelar {
+  background-color: #cccccc;
+  color: #333;
+}
+
+.modal-buttons button#btnCancelar:hover {
+  background-color: #b3b3b3;
+  color: #000;
+}
+
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.perfil-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.columna-izquierda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-perfil {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.foto-perfil {
+  background-color: #1b4d3e;
+  color: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 5px;
+  user-select: none;
+}
+
+/* Modal general */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fff;
+  margin: 8% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.3s ease;
+}
+
+/* Animación suave */
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Botones dentro del modal */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-guardar,
+.btn-cerrar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.btn-guardar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-cerrar {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Inputs del formulario */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.modal-content label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
 

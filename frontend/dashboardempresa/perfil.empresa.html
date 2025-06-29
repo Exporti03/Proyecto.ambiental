@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perfil Empresa</title>
   <link rel="stylesheet" href="../css/styleback.css" />
-  <link rel="stylesheet" href="../css/perfil_empresa.css" />
 </head>
 <body>
   <div class="dashboard">
@@ -30,18 +29,19 @@
         </div>
       </header>
 
-      <section class="content perfil-usuario">
-        <h2 class="titulo-perfil">Perfil de la Empresa</h2>
+      <section class="perfil-usuario">
+        <h2>Perfil de la Empresa</h2>
+
         <div class="perfil-info">
           <div class="foto-perfil">🏢</div>
           <div class="datos">
             <p><strong>Nombre de la Empresa:</strong> <span id="empresa-nombre"></span></p>
             <p><strong>NIT:</strong> <span id="empresa-nit"></span></p>
-            <p><strong>Dirección:</strong> <span id="empresa-direccion"></span></p>
-            <p><strong>Teléfono:</strong> <span id="empresa-telefono"></span></p>
+            <p><strong>Dirección:</strong> <span id="empresa-direccion-text"></span></p>
+            <p><strong>Teléfono:</strong> <span id="empresa-telefono-text"></span></p>
             <p><strong>Email:</strong> <span id="empresa-email"></span></p>
-            <p><strong>Representante Legal:</strong> <span id="empresa-representante"></span></p>
-            <p><strong>Sector:</strong> <span id="empresa-sector"></span></p>
+            <p><strong>Representante Legal:</strong> <span id="empresa-representante-text"></span></p>
+            <p><strong>Sector:</strong> <span id="empresa-sector-text"></span></p>
             <p><strong>Fecha de Registro:</strong> <span id="empresa-fecha"></span></p>
           </div>
         </div>
@@ -53,6 +53,51 @@
       </section>
     </main>
   </div>
+
+  <!-- Modal Edición -->
+  <div id="modalEditar" class="modal">
+    <div class="modal-content">
+      <h3>Editar Información de la Empresa</h3>
+      <form id="formEditar">
+        <label for="input-direccion">Dirección:</label>
+        <input type="text" id="input-direccion" name="direccion" />
+
+        <label for="input-telefono">Teléfono:</label>
+        <input type="text" id="input-telefono" name="telefono" />
+
+        <label for="input-representante">Representante Legal:</label>
+        <input type="text" id="input-representante" name="representante" />
+
+        <label for="input-sector">Sector:</label>
+        <input type="text" id="input-sector" name="sector" />
+
+        <div class="modal-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" id="btnCancelar" class="btn-cerrar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Contraseña -->
+  <div id="modalContrasena" class="modal">
+    <div class="modal-content">
+      <h3>Cambiar Contraseña</h3>
+      <form id="formContrasena">
+        <label for="nueva-contrasena">Nueva Contraseña:</label>
+        <input type="password" id="nueva-contrasena" required />
+
+        <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar-contrasena" required />
+
+        <div class="modal-buttons">
+          <button type="submit" class="btn-guardar">Guardar</button>
+          <button type="button" id="btnCancelarContrasena" class="btn-cerrar">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="../js/perfilempresa.js" defer></script>
 </body>
 </html>
