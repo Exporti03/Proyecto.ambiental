@@ -66,3 +66,14 @@ CREATE TABLE documentos (
   FOREIGN KEY (cliente_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
+USE proyectos;
+
+CREATE TABLE empresa_clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  empresa_id INT NOT NULL,
+  cliente_id INT NOT NULL,
+  estado ENUM('Pendiente', 'Aceptado') DEFAULT 'Pendiente',
+  fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (empresa_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  FOREIGN KEY (cliente_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);

@@ -1120,5 +1120,118 @@ button {
   font-size: 14px;
 }
 
+/* Botones de acción (Aceptar, Rechazar) */
+.btn-accion {
+  padding: 6px 14px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-aceptar {
+  background-color: #28a745;
+}
+
+.btn-aceptar:hover {
+  background-color: #218838;
+}
+
+.btn-rechazar {
+  background-color: #dc3545;
+}
+
+.btn-rechazar:hover {
+  background-color: #c82333;
+}
+
+/* Estilo general de las tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #343a40;
+  color: white;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Efecto al pasar el mouse por una fila */
+table tbody tr:hover {
+  background-color: #e8f0fe;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Etiquetas de estado */
+.estado {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+}
+
+.estado.pendiente {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.estado.aceptado {
+  background-color: #28a745;
+}
+
+.estado.rechazado {
+  background-color: #dc3545;
+}
+
+/* Botón para asociar empresa */
+.btn-asociar {
+  padding: 6px 14px;
+  background-color: #007bff; /* azul principal */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-asociar:hover {
+  background-color: #005683;
+}
+
+
+/* Botón para asociar empresa */
+.btn-asociar {
+  padding: 6px 14px;
+  background-color: #17a2b8; /* azul verdoso suave */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-asociar:hover {
+  background-color: #138496;
+}
+
+
 
 
