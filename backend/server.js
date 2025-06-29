@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Middlewares
+// 🧩 Middlewares
 app.use(cors());
 app.use(express.json());
 
@@ -28,26 +28,27 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(staticFrontend, 'index.html'));
 });
 
-// 📦 Controladores (rutas API)
+// 📦 Rutas API (Controladores)
 const registroRouter = require('./routes/registrocontroller');
 const loginRouter = require('./routes/logincontroller');
 const clientesRouter = require('./routes/clientescontroller');
-const empresaRouter = require('./routes/empresa.controller'); // Empresas
-const clienteRouter = require('./routes/cliente.controller'); // Usuarios personales
+const empresaRouter = require('./routes/empresa.controller');
+const clienteRouter = require('./routes/cliente.controller');
+const asociacionesRouter = require('./routes/asociaciones.controller'); // 🆕
 
-// 🚀 Rutas API
 app.use('/api', registroRouter);
 app.use('/api', loginRouter);
 app.use('/api', clientesRouter);
 app.use('/api', empresaRouter);
 app.use('/api', clienteRouter);
+app.use('/api', asociacionesRouter); // 🆕 Rutas de conexión entre usuarios y empresas
 
-// ❌ Ruta no encontrada
+// ❌ Página no encontrada
 app.use((req, res) => {
   res.status(404).send('Página no encontrada');
 });
 
-// 🔥 Iniciar servidor
+// 🚀 Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en: http://localhost:${PORT}`);
   console.log(`📁 Frontend servido desde: ${staticFrontend}`);

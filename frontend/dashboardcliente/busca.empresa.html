@@ -37,40 +37,40 @@
         <!-- Acciones -->
         <div class="acciones-empresas">
           <input type="search" id="buscarEmpresa" placeholder="Buscar empresa..." />
-          <button class="btn-agregar">+ Agregar Empresa</button>
         </div>
 
-        <!-- Tabla -->
-        <table class="tabla-empresas" aria-label="Lista de empresas asociadas">
+        <!-- Tabla de todas las empresas -->
+        <h2>Empresas Registradas</h2>
+        <table class="tabla-empresas" aria-label="Lista de empresas">
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Contacto</th>
-              <th>Estado</th>
-              <th>Acciones</th>
+              <th>NIT</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+              <th>Email</th>
+              <th>Sector</th>
+              <th>Acción</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="tablaEmpresas">
+            <!-- Contenido dinámico -->
+          </tbody>
+        </table>
+
+        <!-- Tabla de empresas asociadas -->
+        <h2>Empresas Asociadas</h2>
+        <table class="tabla-empresas" aria-label="Empresas asociadas por el usuario">
+          <thead>
             <tr>
-              <td>Empresa Verde S.A.</td>
-              <td>contacto@verde.com</td>
-              <td><span class="estado activo">Activo</span></td>
-              <td>
-                <button class="btn-editar" title="Editar">✏️</button>
-                <button class="btn-ver" title="Ver detalles">👁️</button>
-                <button class="btn-eliminar" title="Eliminar">🗑️</button>
-              </td>
+              <th>Nombre</th>
+              <th>NIT</th>
+              <th>Email</th>
+              <th>Estado</th>
             </tr>
-            <tr>
-              <td>EcoSoluciones Ltda.</td>
-              <td>info@ecosoluciones.com</td>
-              <td><span class="estado inactivo">Inactivo</span></td>
-              <td>
-                <button class="btn-editar" title="Editar">✏️</button>
-                <button class="btn-ver" title="Ver detalles">👁️</button>
-                <button class="btn-eliminar" title="Eliminar">🗑️</button>
-              </td>
-            </tr>
+          </thead>
+          <tbody id="tablaAsociadas">
+            <!-- Contenido dinámico -->
           </tbody>
         </table>
       </section>
