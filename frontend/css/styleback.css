@@ -1040,7 +1040,82 @@ button {
   user-select: none;
 }
 
-/* Modal general */
+/* ---------- Estilo de título para secciones ---------- */
+.titulo-empresas {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b3d2f;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Botón para asociar empresa ---------- */
+.btn-asociar {
+  padding: 6px 14px;
+  background-color: #5cb85c; /* verde suave */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-asociar:hover {
+  background-color: #4cae4c;
+}
+
+/* ---------- Tablas generales ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #343a40;
+  color: white;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table tbody tr:hover {
+  background-color: #e8f0fe;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* ---------- Estados ---------- */
+.estado {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+}
+
+.estado.pendiente {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.estado.aceptado {
+  background-color: #28a745;
+}
+
+.estado.rechazado {
+  background-color: #dc3545;
+}
+
+/* ---------- Modal general ---------- */
 .modal {
   display: none;
   position: fixed;
@@ -1050,7 +1125,7 @@ button {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Contenido del modal */
@@ -1075,6 +1150,22 @@ button {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* Inputs del formulario */
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.modal-content label {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* Botones dentro del modal */
@@ -1102,22 +1193,6 @@ button {
 .btn-cerrar {
   background-color: #dc3545;
   color: white;
-}
-
-/* Inputs del formulario */
-.modal-content input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.modal-content label {
-  font-weight: bold;
-  font-size: 14px;
 }
 
 /* Botones de acción (Aceptar, Rechazar) */
@@ -1148,8 +1223,63 @@ button {
   background-color: #c82333;
 }
 
-/* Estilo general de las tablas */
-table {
+/* Buscar empresa */
+.acciones-empresas {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.acciones-empresas input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 300px;
+}
+
+/* Títulos de sección */
+.titulo-seccion {
+  margin: 10px 0;
+}
+
+.titulo-seccion h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ---------- Botones Aceptar/Rechazar elegantes ---------- */
+.btn-accion {
+  padding: 8px 16px;
+  margin: 5px 4px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-aceptar {
+  background-color: #28a745;
+}
+
+.btn-aceptar:hover {
+  background-color: #218838;
+}
+
+.btn-rechazar {
+  background-color: #dc3545;
+}
+
+.btn-rechazar:hover {
+  background-color: #c82333;
+}
+
+/* ---------- Tabla Clientes ---------- */
+.tabla-empresas {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -1159,25 +1289,24 @@ table {
   overflow: hidden;
 }
 
-table thead {
-  background-color: #343a40;
+.tabla-empresas thead {
+  background-color: #1e4d40;
   color: white;
 }
 
-table th,
-table td {
+.tabla-empresas th,
+.tabla-empresas td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-/* Efecto al pasar el mouse por una fila */
-table tbody tr:hover {
+.tabla-empresas tbody tr:hover {
   background-color: #e8f0fe;
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Etiquetas de estado */
+/* ---------- Estado del cliente ---------- */
 .estado {
   padding: 4px 8px;
   border-radius: 4px;
@@ -1199,27 +1328,9 @@ table tbody tr:hover {
   background-color: #dc3545;
 }
 
-/* Botón para asociar empresa */
 .btn-asociar {
   padding: 6px 14px;
-  background-color: #007bff; /* azul principal */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-asociar:hover {
-  background-color: #005683;
-}
-
-
-/* Botón para asociar empresa */
-.btn-asociar {
-  padding: 6px 14px;
-  background-color: #17a2b8; /* azul verdoso suave */
+  background-color: #17a2b8;
   color: white;
   border: none;
   border-radius: 6px;
@@ -1231,7 +1342,3 @@ table tbody tr:hover {
 .btn-asociar:hover {
   background-color: #138496;
 }
-
-
-
-
