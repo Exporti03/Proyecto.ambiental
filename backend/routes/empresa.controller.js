@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
-const bcrypt = require('bcrypt'); // Para cifrar la contraseña
+const bcrypt = require('bcrypt');
 
 // ✅ Obtener listado de todas las empresas
 router.get('/empresas', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/empresas', async (req, res) => {
   }
 });
 
-// ✅ Asociar usuario con empresa
+// ✅ Asociar usuario con empresa (CORREGIDO para permitir reenviar si fue eliminado)
 router.post('/asociar', async (req, res) => {
   const { usuario_id, empresa_id } = req.body;
 
@@ -29,12 +29,13 @@ router.post('/asociar', async (req, res) => {
 
   try {
     const [existente] = await db.query(
-      `SELECT * FROM empresa_clientes WHERE cliente_id = ? AND empresa_id = ?`,
+      `SELECT * FROM empresa_clientes 
+       WHERE cliente_id = ? AND empresa_id = ? AND estado IN ('Pendiente', 'Aceptado')`,
       [usuario_id, empresa_id]
     );
 
     if (existente.length > 0) {
-      return res.status(409).json({ error: 'Ya existe una solicitud o relación.' });
+      return res.status(409).json({ error: 'Ya existe una solicitud pendiente o aceptada.' });
     }
 
     await db.query(
@@ -56,7 +57,12 @@ router.get('/usuarios/:usuarioId/empresas', async (req, res) => {
 
   try {
     const [rows] = await db.query(`
-      SELECT de.nombre_empresa AS nombre, de.nit, u.correo AS email, ec.estado
+      SELECT 
+        ec.id AS id_asociacion,
+        de.nombre_empresa AS nombre, 
+        de.nit, 
+        u.correo AS email, 
+        ec.estado
       FROM empresa_clientes ec
       JOIN datos_empresas de ON ec.empresa_id = de.usuario_id
       JOIN usuarios u ON u.id = de.usuario_id
@@ -173,7 +179,7 @@ router.patch('/empresa/editar/:id', async (req, res) => {
   }
 });
 
-// ✅ Cambiar contraseña de empresa (CORREGIDO CON BCRYPT)
+// ✅ Cambiar contraseña de empresa
 router.patch('/empresa/cambiar-contrasena/:id', async (req, res) => {
   const { id } = req.params;
   const { nuevaContrasena } = req.body;
@@ -183,7 +189,7 @@ router.patch('/empresa/cambiar-contrasena/:id', async (req, res) => {
   }
 
   try {
-    const hash = await bcrypt.hash(nuevaContrasena, 10); // 🔐 Cifrar la nueva contraseña
+    const hash = await bcrypt.hash(nuevaContrasena, 10);
 
     const [result] = await db.query(
       `UPDATE usuarios SET contrasena = ? WHERE id = ? AND tipo = 'empresa'`,
@@ -198,6 +204,27 @@ router.patch('/empresa/cambiar-contrasena/:id', async (req, res) => {
   } catch (error) {
     console.error('Error al cambiar contraseña:', error);
     res.status(500).json({ error: 'Error al cambiar la contraseña' });
+  }
+});
+
+// ✅ Eliminar asociación por ID
+router.delete('/asociacion/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [result] = await db.query(
+      `DELETE FROM empresa_clientes WHERE id = ?`,
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Asociación no encontrada' });
+    }
+
+    res.json({ mensaje: 'Asociación eliminada correctamente' });
+  } catch (error) {
+    console.error('❌ Error al eliminar asociación:', error);
+    res.status(500).json({ error: 'Error del servidor' });
   }
 });
 

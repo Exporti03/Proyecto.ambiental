@@ -144,3 +144,57 @@ function customAlert(message, type = 'info') {
 
 // ✅ Hacer pública la función para uso desde el HTML
 window.asociarEmpresa = asociarEmpresa;
+
+async function cargarEmpresasAsociadas(usuarioId) {
+  try {
+    const res = await fetch(`/api/usuarios/${usuarioId}/empresas`);
+    const asociadas = await res.json();
+
+    console.log("📎 Empresas asociadas:", asociadas);
+
+    const tbody = document.getElementById('tablaAsociadas');
+    tbody.innerHTML = '';
+
+    asociadas.forEach(emp => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${emp.nombre}</td>
+        <td>${emp.nit}</td>
+        <td>${emp.email}</td>
+        <td><span class="estado ${emp.estado.toLowerCase()}">${emp.estado}</span></td>
+        <td>
+          <button class="btn-eliminar" onclick="eliminarAsociacion(${emp.id_asociacion})">🗑️</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } catch (error) {
+    console.error('❌ Error al cargar empresas asociadas:', error);
+  }
+}
+
+async function eliminarAsociacion(id) {
+  const confirmacion = confirm('¿Estás seguro de eliminar esta asociación?');
+  if (!confirmacion) return;
+
+  try {
+    const res = await fetch(`/api/asociacion/${id}`, {
+      method: 'DELETE'
+    });
+
+    if (res.ok) {
+      customAlert('✅ Asociación eliminada correctamente', 'success');
+      const usuario = JSON.parse(localStorage.getItem('usuario'));
+      await cargarEmpresasAsociadas(usuario.id);
+    } else {
+      const err = await res.json();
+      customAlert('❌ Error al eliminar: ' + err.error, 'error');
+    }
+  } catch (error) {
+    console.error('❌ Error al eliminar asociación:', error);
+    customAlert('❌ Error en la conexión o el servidor.', 'error');
+  }
+}
+
+window.eliminarAsociacion = eliminarAsociacion;
+

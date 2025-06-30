@@ -1,32 +1,15 @@
-// 📁 public/js/clientes_asociados.js
-
 document.addEventListener('DOMContentLoaded', async () => {
   const usuario = JSON.parse(localStorage.getItem('usuario'));
   if (!usuario || usuario.tipo !== 'empresa') {
-    alert('Debes iniciar sesión como empresa.');
-    window.location.href = '../index.html';
+    console.warn('⚠️ Usuario no válido o no es empresa.');
     return;
   }
-
-  const userButton = document.getElementById('user-button');
-  if (usuario && usuario.nombre) {
-    userButton.textContent = `👤 ${capitalize(usuario.nombre)}`;
-  }
-
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    localStorage.removeItem('usuario');
-    window.location.href = '../index.html';
-  });
 
   await cargarSolicitudesPendientes(usuario.id);
   await cargarClientesAceptados(usuario.id);
 });
 
-function capitalize(str) {
-  return str.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-}
-
-// 🔽 Solicitudes pendientes de clientes
+// 🔽 Solicitudes pendientes de asociación
 async function cargarSolicitudesPendientes(empresaId) {
   try {
     const res = await fetch(`/api/empresa/${empresaId}/solicitudes`);
@@ -42,25 +25,23 @@ async function cargarSolicitudesPendientes(empresaId) {
 
     solicitudes.forEach(cliente => {
       const tarjeta = document.createElement('div');
-      tarjeta.classList.add('tarjeta-cliente');
-
+      tarjeta.className = 'tarjeta-cliente';
       tarjeta.innerHTML = `
-        <h3>${capitalize(cliente.nombre)}</h3>
-        <p>${cliente.correo}</p>
+        <p><strong>Nombre:</strong> ${cliente.nombre}</p>
+        <p><strong>Correo:</strong> ${cliente.correo}</p>
         <div class="acciones">
-          <button onclick="aceptarSolicitud(${empresaId}, ${cliente.id})">Aceptar</button>
-          <button onclick="rechazarSolicitud(${empresaId}, ${cliente.id})">Rechazar</button>
+          <button onclick="aceptarSolicitud(${empresaId}, ${cliente.id})">✅ Aceptar</button>
+          <button onclick="rechazarSolicitud(${empresaId}, ${cliente.id})">❌ Rechazar</button>
         </div>
       `;
-
       contenedor.appendChild(tarjeta);
     });
   } catch (error) {
-    console.error('❌ Error al cargar solicitudes:', error);
+    console.error('❌ Error al cargar solicitudes pendientes:', error);
   }
 }
 
-// 🔽 Clientes ya asociados (aceptados)
+// 🔽 Clientes ya aceptados
 async function cargarClientesAceptados(empresaId) {
   try {
     const res = await fetch(`/api/empresa/${empresaId}/clientes`);
@@ -69,21 +50,26 @@ async function cargarClientesAceptados(empresaId) {
     const tbody = document.getElementById('clientesAsociados');
     tbody.innerHTML = '';
 
+    if (clientes.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="3">No hay clientes asociados.</td></tr>';
+      return;
+    }
+
     clientes.forEach(cliente => {
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td>${capitalize(cliente.nombre)}</td>
+        <td>${cliente.nombre}</td>
         <td>${cliente.correo}</td>
         <td>Aceptado</td>
       `;
       tbody.appendChild(tr);
     });
   } catch (error) {
-    console.error('❌ Error al cargar clientes asociados:', error);
+    console.error('❌ Error al cargar clientes aceptados:', error);
   }
 }
 
-// 🔘 Aceptar solicitud
+// 🔽 Aceptar solicitud
 async function aceptarSolicitud(empresaId, clienteId) {
   try {
     const res = await fetch(`/api/empresa/${empresaId}/solicitud/${clienteId}/aceptar`, {
@@ -91,19 +77,19 @@ async function aceptarSolicitud(empresaId, clienteId) {
     });
 
     if (res.ok) {
-      alert('✅ Cliente aceptado');
+      alert('✅ Solicitud aceptada.');
       await cargarSolicitudesPendientes(empresaId);
       await cargarClientesAceptados(empresaId);
     } else {
-      const error = await res.json();
-      alert('❌ ' + error.error);
+      const err = await res.json();
+      alert('❌ ' + (err.error || 'Error al aceptar.'));
     }
   } catch (error) {
     console.error('❌ Error al aceptar solicitud:', error);
   }
 }
 
-// ⛔ Rechazar solicitud
+// 🔽 Rechazar solicitud
 async function rechazarSolicitud(empresaId, clienteId) {
   try {
     const res = await fetch(`/api/empresa/${empresaId}/solicitud/${clienteId}/rechazar`, {
@@ -111,18 +97,17 @@ async function rechazarSolicitud(empresaId, clienteId) {
     });
 
     if (res.ok) {
-      alert('⛔ Solicitud rechazada');
+      alert('🗑️ Solicitud rechazada.');
       await cargarSolicitudesPendientes(empresaId);
     } else {
-      const error = await res.json();
-      alert('❌ ' + error.error);
+      const err = await res.json();
+      alert('❌ ' + (err.error || 'Error al rechazar.'));
     }
   } catch (error) {
     console.error('❌ Error al rechazar solicitud:', error);
   }
 }
 
+// Hacer públicas para el HTML
 window.aceptarSolicitud = aceptarSolicitud;
 window.rechazarSolicitud = rechazarSolicitud;
-
-

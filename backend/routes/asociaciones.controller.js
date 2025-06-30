@@ -154,4 +154,27 @@ router.get('/empresa/:empresaId/clientes', async (req, res) => {
   }
 });
 
+
+
 module.exports = router;
+
+// ✅ Eliminar asociación por ID
+router.delete('/asociacion/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [result] = await db.query(
+      `DELETE FROM empresa_clientes WHERE id = ?`,
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Asociación no encontrada' });
+    }
+
+    res.json({ mensaje: 'Asociación eliminada correctamente' });
+  } catch (error) {
+    console.error('❌ Error al eliminar asociación:', error);
+    res.status(500).json({ error: 'Error del servidor' });
+  }
+});
